@@ -108,7 +108,7 @@ export default function PricingPage() {
         : (homeData?.smePlans || []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] text-slate-800 font-hind pb-24">
+        <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#414b41] to-[#2bd22b] text-slate-800 font-hind pb-24">
             
             {/* হেডার সেকশন - অরেঞ্জ গ্রাডিয়েন্ট ওভারলে */}
             <section className="relative h-[300px] lg:h-[400px] flex items-center justify-center overflow-hidden">

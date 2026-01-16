@@ -16,7 +16,7 @@ export default function AboutPage() {
                 />
                 {/* অরেঞ্জ ওভারলে যা ভিডিওর সাথে মিশে যাবে */}
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-900/60 via-transparent to-orange-100"></div>
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-orange-100"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#4DE353]"></div>
 
                 <div className="relative z-10 text-center px-6">
                     <motion.h1
