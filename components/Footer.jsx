@@ -158,7 +158,7 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center lg:justify-start gap-8">
             {[
               { icon: <Phone size={18} />, text: "+880 9638 121 121", label: "Helpline" },
-              { icon: <Mail size={18} />, text: "info@dotinternetbd.com", label: "Email" },
+              { icon: <Mail size={18} />, text: "info@cyberlinkcomuinication.com", label: "Email" },
             ].map((item, i) => (
               <div key={i} className="flex items-center gap-4 bg-white/5 p-4 pr-8 rounded-2xl border border-white/5 hover:border-orange-500/30 transition-all group shadow-xl">
                 <div className="p-3 rounded-xl bg-orange-600 text-white shadow-lg">{item.icon}</div>

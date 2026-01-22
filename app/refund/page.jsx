@@ -129,7 +129,7 @@ const RefundPolicyPage = () => {
                     09638 121 121
                   </div>
                   <div className="text-sm font-bold text-gray-400 font-poppins">
-                    billing@dotinternetbd.com
+                    billing@cyberlinkcomuinication.com
                   </div>
                </div>
             </div>

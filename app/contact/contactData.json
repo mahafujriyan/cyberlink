@@ -7,13 +7,13 @@
   "info": {
     "title": "Contact Information",
     "phones": ["+8809639121121", "+8809638121121"],
-    "email": "info@dotinternetbd.com",
+    "email": "info@cyberlinkcomuinication.com",
     "address": "650, Rayer Bazar East, (Jafrabad), Mohammadpur, Dhaka.",
     "enquiries": [
-      { "label": "Billing enquiries", "email": "accounts@dotinternetbd.com" },
-      { "label": "Technical enquiries", "email": "noc@dotinternetbd.com" },
-      { "label": "New connection enquiries", "email": "sales@dotinternetbd.com" },
-      { "label": "Management", "email": "admin@dotinternetbd.com" }
+      { "label": "Billing enquiries", "email": "accounts@cyberlinkcomuinication.com" },
+      { "label": "Technical enquiries", "email": "noc@cyberlinkcomuinication.com" },
+      { "label": "New connection enquiries", "email": "sales@cyberlinkcomuinication.com" },
+      { "label": "Management", "email": "admin@cyberlinkcomuinication.com" }
     ]
   }
 }

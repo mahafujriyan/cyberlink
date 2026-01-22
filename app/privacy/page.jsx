@@ -122,8 +122,8 @@ const PrivacyPolicyPage = () => {
                <p className="text-gray-400 text-sm font-medium mb-8 leading-relaxed font-hind">
                   আপনার তথ্য সংক্রান্ত যেকোনো সংশোধনী বা প্রশ্নের জন্য সরাসরি আমাদের প্রাইভেসি টিমের সাথে যোগাযোগ করুন।
                </p>
-               <a href="mailto:privacy@dotinternet.com" className="flex items-center gap-3 text-white font-black text-lg hover:text-[#BFFF00] transition-colors">
-                  privacy@dotinternetbd.com
+               <a href="mailto:privacy@cyberlinkcomuinication.com" className="flex items-center gap-3 text-white font-black text-lg hover:text-[#BFFF00] transition-colors">
+                  privacy@cyberlinkcomuinication.com
                </a>
             </div>
           </div>
