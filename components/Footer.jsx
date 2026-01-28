@@ -45,7 +45,7 @@ const Footer = () => {
       links: [
         { name: "Join Group", href: "https://facebook.com" }, 
         { name: "Like our Page", href: "https://facebook.com" },
-        { name: "ERPY", href: "/erpy" },
+        { name: "ERP", href: "/erp" },
         { name: "Pay Service", href: "/pay-service" }
       ]
     },

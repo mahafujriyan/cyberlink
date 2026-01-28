@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Lottie from "lottie-react";
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
@@ -12,13 +13,13 @@ import { Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 
+
 // আইকনসমূহ
 import {
     Check, Facebook, Home, Shield, Briefcase, Server,
     UploadCloud, Settings, Database, Globe, MapPin, Search, Map, ChevronDown
 } from 'lucide-react';
 
-import homeData from './homeData.json';
 
 // --- লটি হেল্পার কম্পোনেন্ট ---
 const LottieComponent = ({ url }) => {
@@ -107,44 +108,23 @@ export default function HomePage() {
                                                     ))}
                                                 </div>
                                             </div>
-                                            <div className="w-full lg:w-2/5 flex justify-center order-1 lg:order-2">
-                                                <img src={slide.image} className="w-40 sm:w-64 lg:w-full max-w-[420px] floating-anim drop-shadow-2xl" alt="hero" />
-                                            </div>
+                                            
                                         </div>
                                     )}
 
                                     {/* টাইপ: গেম লোগো */}
                                     {slide.type === 'games' && (
                                         <div className="w-full text-center text-white px-2">
-                                            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black mb-8 lg:mb-12 drop-shadow-xl font-poppins px-4 uppercase tracking-tighter">{slide.title}</h1>
-                                            <div className="grid grid-cols-4 sm:grid-cols-5 lg:grid-cols-8 gap-2 lg:gap-4 max-w-5xl mx-auto">
-                                                {slide.logos?.map((logo, i) => (
-                                                    <div key={i} className="bg-white/95 p-2 lg:p-3 rounded-lg lg:rounded-2xl flex items-center justify-center h-14 sm:h-20 lg:h-24 shadow-xl border border-white transition-transform hover:scale-105">
-                                                        <img src={logo.img} className="h-6 sm:h-10 lg:h-12 w-auto object-contain" alt="game" />
-                                                    </div>
-                                                ))}
-                                            </div>
+                                          
+                                    <   Image src='/banner/cyberlink banner.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
                                         </div>
                                     )}
 
                                     {/* টাইপ: IPv6 */}
                                     {slide.type === 'ipv6' && (
                                         <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                            <div className="w-full lg:w-1/2 text-center lg:text-left text-white order-2 lg:order-1">
-                                                <h1 className="text-4xl sm:text-6xl lg:text-9xl font-black mb-2 leading-none font-poppins drop-shadow-2xl tracking-tighter">IPv6 READY</h1>
-                                                <p className="text-lg sm:text-2xl lg:text-3xl font-bold text-orange-400 mb-6 lg:mb-8 uppercase tracking-widest px-4 lg:px-0 font-hind">{slide.subtitle}</p>
-                                                <ul className="mb-8 space-y-2 font-medium hidden sm:block font-hind">
-                                                    {slide.features?.map((f, i) => (
-                                                        <li key={i} className="flex items-center text-sm lg:text-lg justify-center lg:justify-start">
-                                                            <span className="w-2 h-2 bg-orange-500 rounded-full mr-3 animate-ping"></span>{f}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                                <button className="bg-orange-600 hover:bg-orange-700 text-white px-8 lg:px-12 py-3 lg:py-4 rounded-full font-black text-sm lg:text-lg shadow-xl active:scale-95 transition-all uppercase tracking-widest font-poppins">Get Connection</button>
-                                            </div>
-                                            <div className="w-full lg:w-1/2 flex justify-center order-1 lg:order-2">
-                                                <img src={slide.image} className="w-48 sm:w-80 lg:w-[480px] rotate-anim drop-shadow-2xl" alt="ipv6" />
-                                            </div>
+                                          <   Image src='/banner/cyberlink_web_banner_01.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
+                                           
                                         </div>
                                     )}
                                 </div>

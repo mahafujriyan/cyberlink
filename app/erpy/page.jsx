@@ -44,7 +44,7 @@ const ErpyPage = () => {
                     <img 
                         src="https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg" 
                         className="w-full h-full object-cover opacity-30 brightness-110" 
-                        alt="ERPY Header" 
+                        alt="ERP Header" 
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-orange-100 via-orange-100/70 to-transparent"></div>
                 </div>
@@ -60,10 +60,10 @@ const ErpyPage = () => {
                             The Next-Gen ERP
                         </div>
                         <h1 className="text-5xl lg:text-9xl font-black mb-6 text-orange-950 font-poppins tracking-tighter uppercase italic leading-none">
-                            ERPY <span className="text-orange-600">System</span>
+                            ERP <span className="text-orange-600">System</span>
                         </h1>
                         <p className="text-slate-600 text-lg lg:text-2xl font-bold leading-relaxed opacity-90 max-w-2xl">
-                            আপনার ব্যবসাকে অটোমেটেড এবং স্মার্ট করতে আমরা নিয়ে এসেছি সম্পূর্ণ ইন্টিগ্রেটেড ERPY সলিউশন। পরিচালনা করুন সবকিছু এক জায়গা থেকে।
+                            আপনার ব্যবসাকে অটোমেটেড এবং স্মার্ট করতে আমরা নিয়ে এসেছি সম্পূর্ণ ইন্টিগ্রেটেড ERP সলিউশন। পরিচালনা করুন সবকিছু এক জায়গা থেকে।
                         </p>
                     </motion.div>
                 </div>
@@ -84,7 +84,7 @@ const ErpyPage = () => {
                             <span className="text-orange-600">Without Compromise</span>
                         </h2>
                         <p className="text-slate-500 text-lg lg:text-xl font-medium leading-relaxed">
-                            ERPY শুধু একটি সফটওয়্যার নয়, এটি আপনার ব্যবসার প্রতিটি ধাপকে সহজতর করার একটি মাধ্যম। বিলিং থেকে শুরু করে সাপোর্ট এবং ইনভেন্টরি—সবকিছুই এখন হাতের মুঠোয়।
+                            ERP শুধু একটি সফটওয়্যার নয়, এটি আপনার ব্যবসার প্রতিটি ধাপকে সহজতর করার একটি মাধ্যম। বিলিং থেকে শুরু করে সাপোর্ট এবং ইনভেন্টরি—সবকিছুই এখন হাতের মুঠোয়।
                         </p>
                     </div>
                     <div className="lg:w-1/3 flex justify-center">
@@ -133,7 +133,7 @@ const ErpyPage = () => {
                         <div>
                             <h2 className="text-4xl lg:text-7xl font-black mb-8 font-poppins tracking-tighter uppercase leading-none">
                                 Why Choose <br />
-                                <span className="text-orange-500 italic">ERPY?</span>
+                                <span className="text-orange-500 italic">ERP?</span>
                             </h2>
                             <div className="space-y-6">
                                 {[
@@ -170,7 +170,7 @@ const ErpyPage = () => {
                         <MessageSquare size={48} className="mx-auto text-orange-600 mb-6 animate-bounce" />
                         <h2 className="text-3xl lg:text-5xl font-black text-slate-950 mb-6 font-poppins">Need a Custom <span className="text-orange-600">Solution?</span></h2>
                         <p className="text-slate-500 text-lg lg:text-xl font-bold mb-10 leading-relaxed">
-                            আপনার ব্যবসার ধরণ অনুযায়ী আমাদের ERPY কাস্টমাইজ করে নিতে পারেন। আমাদের বিশেষজ্ঞ টিমের সাথে আজই কথা বলুন।
+                            আপনার ব্যবসার ধরণ অনুযায়ী আমাদের ERP কাস্টমাইজ করে নিতে পারেন। আমাদের বিশেষজ্ঞ টিমের সাথে আজই কথা বলুন।
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <button className="bg-orange-600 hover:bg-orange-700 text-white px-10 py-4 rounded-2xl font-black shadow-lg transition-all active:scale-95">Contact Sales</button>

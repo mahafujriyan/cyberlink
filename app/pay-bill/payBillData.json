@@ -1,7 +1,7 @@
 {
   "header": {
     "title": "How to Pay?",
-    "description": "Make your payment via internet and mobile banking and enjoy automatic bill update with Dot Internet's automatic billing system.",
+    "description": "Make your payment via internet and mobile banking and enjoy automatic bill update with CyberLink Communication's automatic billing system.",
     "bgImage": "https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg"
   },
   "paymentMethods": [
@@ -12,7 +12,7 @@
       "steps": [
         "Login to your bKash account with your PIN.",
         "Select 'Pay Bill' option from the menu.",
-        "Under 'Internet' find and select 'Dot Internet'.",
+        "Under 'Internet' find and select 'CyberLink Communication'.",
         "Enter your Customer ID and check the bill.",
         "Confirm payment to complete the process."
       ],
@@ -25,7 +25,7 @@
       "steps": [
         "Login to your Upay account.",
         "Select 'Pay Bill' and tap on 'Internet'.",
-        "Select 'Dot Internet' from the provider list.",
+        "Select 'CyberLink Communication' from the provider list.",
         "Enter your unique Customer ID.",
         "Check amount and confirm with your PIN."
       ],
@@ -38,7 +38,7 @@
       "steps": [
         "Dial *322# or login to Rocket App.",
         "Select 'Bill Pay' and choose 'Self' or 'Other'.",
-        "Enter Biller ID for Dot Internet (e.g. 1234).",
+        "Enter Biller ID for CyberLink Communication (e.g. 1234).",
         "Provide your Customer ID as Bill Number.",
         "Enter Bill amount and your Secret PIN."
       ],
@@ -49,7 +49,7 @@
     {
       "id": 1,
       "bankName": "Brac Bank",
-      "accountName": "DOT INTERNET",
+      "accountName": "CYBERLINK COMMUNICATION",
       "accountNo": "1509201168141001",
       "routing": "060276074",
       "branch": "SATMASJID ROAD",
@@ -58,7 +58,7 @@
     {
       "id": 2,
       "bankName": "One Bank",
-      "accountName": "DOT INTERNET",
+      "accountName": "CYBERLINK COMMUNICATION",
       "accountNo": "0391020004607",
       "routing": "165260727",
       "branch": "BANASREE BRANCH",
@@ -67,7 +67,7 @@
     {
       "id": 3,
       "bankName": "City Bank",
-      "accountName": "DOT INTERNET",
+      "accountName": "CYBERLINK COMMUNICATION",
       "accountNo": "1502387863001",
       "routing": "225263527",
       "branch": "NEW MARKET BRANCH",
