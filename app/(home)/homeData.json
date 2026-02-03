@@ -1,0 +1,171 @@
+{
+  "heroSlides": [
+    {
+      "id": 1,
+      "type": "packages",
+      "bgImage": "https://github.com/mdabdullahm/video/raw/refs/heads/main/14900-259623335_tiny.mp4",
+      "title": "আমাদের প্রিমিয়াম প্যাকেজের",
+      "subtitle": "সাথে নিরবচ্ছিন্ন ইন্টারনেট সংযোগের অভিজ্ঞতা নিন",
+      "image": "https://i.ibb.co.com/9kgt40Xx/global-network-connectivity-interconnected-nodes-and-systems-png.png",
+      "items": [
+        { "label": "40 Mbps", "price": "890 TK" },
+        { "label": "60 Mbps", "price": "1050 TK" },
+        { "label": "70 Mbps", "price": "1280 TK" },
+        { "label": "80 Mbps", "price": "1575 TK" },
+        { "label": "100 Mbps", "price": "2100 TK" },
+        { "label": "120 Mbps", "price": "3150 TK" },
+        { "label": "150 Mbps", "price": "4200 TK" }
+      ]
+    },
+    {
+      "id": 2,
+      "type": "games",
+      "bgImage": "https://github.com/mdabdullahm/video/raw/refs/heads/main/hero2.mp4",
+      "title": "হাই স্পিড এ ডাউনলোড করুন সকল গেম",
+      "logos": [
+        { "img": "https://i.ibb.co.com/R4QKNpRP/im1.png" },
+        { "img": "https://i.ibb.co.com/jvf317K0/im2.png" },
+        { "img": "https://i.ibb.co.com/TB9Qt2fR/im3.png" },
+        { "img": "https://i.ibb.co.com/7tCcw7z0/im4.png" },
+        { "img": "https://i.ibb.co.com/4Rb7vTmp/im5.png" },
+        { "img": "https://i.ibb.co.com/Kz8tVKgg/im6.png" },
+        { "img": "https://i.ibb.co.com/LD4Zs0dK/im7.png" },
+        { "img": "https://i.ibb.co.com/B2PFpDx6/im8.png" },
+        { "img": "https://i.ibb.co.com/XkFRBMGL/im9.png" },
+        { "img": "https://i.ibb.co.com/V0J9smQR/im10.png" },
+        { "img": "https://i.ibb.co.com/4wt72cmG/im11.png" },
+        { "img": "https://i.ibb.co.com/FbWLB5mF/im12.png" }
+      ]
+    },
+    {
+      "id": 3,
+      "type": "ipv6",
+      "bgImage": "https://i.ibb.co.com/svKg52mn/photo-2026-01-04-21-48-05.jpg",
+      "title": "IPv6 READY",
+      "subtitle": "Connecting the World",
+      "image": "https://i.ibb.co.com/PsYTsbc7/network-sphere-interconnected-nodes-and-global-systems-png.png",
+      "features": ["One address at a time with IPv6"]
+    }
+  ],
+ 
+
+  "featureCards": [
+    {
+      "id": 1,
+      "title": "Why CeyberLink Communication?",
+      "videoUrl": "https://github.com/mdabdullahm/video/raw/refs/heads/main/mp41.mov",
+      "bgColor": "bg-[#ffedea]"
+    },
+    {
+      "id": 2,
+      "title": "Coverage area",
+      "videoUrl": "/lotte1.json",
+      "bgColor": "bg-[#f5f5dc]"
+    },
+    {
+      "id": 3,
+      "title": "CeyberLink's Self-care",
+      "videoUrl": "/lotte2.json",
+      "bgColor": "bg-[#cbd5e1]"
+    },
+    {
+      "id": 4,
+      "title": "Support 24/7",
+      "videoUrl": "/lotte3.json",
+      "bgColor": "bg-[#e9d5ff]"
+    }
+  ],
+
+  "regularPlans": [
+    {
+      "id": 1,
+      "name": "Silver+",
+      "speed": "40 Mbps",
+      "price": "890",
+      "features": ["High speed BDIX and CDN", "4K Youtube and Facebook", "Optical Fiber Connection", "IPv6 Public IP Only", "24/7 Phone Support", "1:8 Contention Ratio"]
+    },
+    {
+      "id": 2,
+      "name": "Gold+",
+      "speed": "60 Mbps",
+      "price": "1050",
+      "features": ["High speed BDIX and CDN", "4K Youtube and Facebook", "Optical Fiber Connection", "IPv6 Public IP Only", "24/7 Phone Support", "1:8 Contention Ratio"]
+    },
+    {
+      "id": 3,
+      "name": "Platinum+",
+      "speed": "70 Mbps",
+      "price": "1280",
+      "features": ["High speed BDIX and CDN", "4K Youtube and Facebook", "Optical Fiber Connection", "IPv6 Public IP Only", "24/7 Phone Support", "1:8 Contention Ratio"]
+    },
+    {
+      "id": 4,
+      "name": "Diamond+",
+      "speed": "80 Mbps",
+      "price": "1575",
+      "features": ["High speed BDIX and CDN", "4K Youtube and Facebook", "Optical Fiber Connection", "IPv6 Public IP Only", "24/7 Phone Support", "1:8 Contention Ratio"]
+    },
+    {
+      "id": 5,
+      "name": "Sapphire+",
+      "speed": "100 Mbps",
+      "price": "2100",
+      "features": ["High speed BDIX and CDN", "4K Youtube and Facebook", "Optical Fiber Connection", "IPv6 Public IP Only", "24/7 Phone Support", "1:8 Contention Ratio"]
+    },
+    {
+      "id": 6,
+      "name": "Star+",
+      "speed": "120 Mbps",
+      "price": "3150",
+      "features": ["High speed BDIX and CDN", "4K Youtube and Facebook", "Optical Fiber Connection", "IPv6 Public IP Only", "24/7 Phone Support", "1:8 Contention Ratio"]
+    }
+  ],
+  "smePlans": [
+    {
+      "id": 101,
+      "name": "SME Business",
+      "speed": "150 Mbps",
+      "price": "5000",
+      "features": ["Dedicated Bandwidth", "Static IP Support", "99.9% Uptime Guarantee", "Real IP Included", "Priority Support", "1:1 Contention Ratio"]
+    }
+  ],
+
+  "coverageBanner": {
+    "title": "Ready to start?",
+    "subTitle": "Locate our coverage area",
+    "description": "Dot Internet is spread almost everywhere in Dhaka city. Check the availability of all coverage areas in Dhaka.",
+    "btnText": "Coverage Area",
+    "bgImage": "https://github.com/mdabdullahm/video/raw/refs/heads/main/0009.mp4",
+    "overlayText": "কভারেজ এরিয়া"
+  },
+
+  "columns": [
+      {
+        "title": "COMPANY",
+        "links": ["About us", "Pricing", "Coverage area", "Bill Payment"]
+      },
+      {
+        "title": "SUPPORT",
+        "links": ["How to Pay", "Self-care", "Articles", "Contact us"]
+      },
+      {
+        "title": "QUICK LINKS",
+        "links": ["Join Group", "Like our Page"]
+      },
+      {
+        "title": "LEGAL",
+        "links": ["Terms & Conditions", "Privacy Policy", "Return & Refund", "BTRC Approved Tariff"]
+      }
+    ],
+    "newsletter": {
+      "title": "SUBSCRIBE TO OUR NEWSLETTER",
+      "desc": "The latest news, articles, and resources, sent to your inbox weekly."
+    },
+    "paymentLogos": [
+      "https://i.ibb.co/S6pP6vN/visa.png",
+      "https://i.ibb.co/XSbL0xX/mastercard.png",
+      "https://i.ibb.co/9vP6H4Q/bkash.png",
+      "https://i.ibb.co/r7C8L3J/nagad.png",
+      "https://i.ibb.co/r7C8L3J/rocket.png"
+    ]
+}

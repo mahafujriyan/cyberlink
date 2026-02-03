@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Lottie from "lottie-react";
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-
+import homeData from "./homeData.json";
 // Swiper ইমপোর্ট
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
@@ -19,6 +19,8 @@ import {
     Check, Facebook, Home, Shield, Briefcase, Server,
     UploadCloud, Settings, Database, Globe, MapPin, Search, Map, ChevronDown
 } from 'lucide-react';
+
+import ServicesPage from '../services/page';
 
 
 // --- লটি হেল্পার কম্পোনেন্ট ---
@@ -46,7 +48,7 @@ const getIcon = (iconName) => {
 };
 
 export default function HomePage() {
-    // ৩ডি অ্যানিমেশন মোশন ভ্যালু (সেবা অঞ্চল ব্যানারের জন্য)
+ 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const rotateX = useTransform(y, [-100, 100], [10, -10]);
@@ -62,12 +64,20 @@ export default function HomePage() {
     // সেকশন ডিভাইডার বর্ডার
     const SectionBorder = () => (
         <div className="w-full flex justify-center py-10">
-            <div className="w-[80%] h-[1px] bg-gradient-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
+            <div className="w-[80%] h-px bg-linear-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
         </div>
     );
 
     return (
-        <div className="min-h-screen  bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] font-hind selection:bg-orange-500 selection:text-white">
+        <div className="min-h-screen 
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500 
+">
            {/* ১. Hero Section (Fully Responsive Slider) */}
             <section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
                 <Swiper
@@ -95,35 +105,26 @@ export default function HomePage() {
                                     
                                     {/* টাইপ: প্যাকেজ */}
                                     {slide.type === 'packages' && (
-                                        <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                            <div className="w-full lg:w-3/5 text-center lg:text-left text-white order-2 lg:order-1">
-                                                <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">{slide.title}</h1>
-                                                <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-orange-50 opacity-90 max-w-xl mx-auto lg:mx-0 font-hind">{slide.subtitle}</p>
-                                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-3">
-                                                    {slide.items?.map((item, i) => (
-                                                        <div key={i} className="bg-white/10 backdrop-blur-md p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 text-center hover:bg-orange-600 transition-all cursor-pointer shadow-lg font-poppins">
-                                                            <div className="text-lg lg:text-xl font-black italic">{item.label}</div>
-                                                            <div className="text-[10px] font-bold opacity-80 mt-0.5 uppercase">{item.price}</div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                            
+                                       <div className="w-full text-center text-white px-2">
+                                          
+                                    <   Image src='/banner/spark it web banner 01.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
                                         </div>
+                                            
+                                       
                                     )}
 
                                     {/* টাইপ: গেম লোগো */}
                                     {slide.type === 'games' && (
                                         <div className="w-full text-center text-white px-2">
                                           
-                                    <   Image src='/banner/cyberlink banner.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
+                                    <   Image src='/banner/spark it web banner 03.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
                                         </div>
                                     )}
 
                                     {/* টাইপ: IPv6 */}
                                     {slide.type === 'ipv6' && (
                                         <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                          <   Image src='/banner/cyberlink_web_banner_01.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
+                                          <   Image src='/banner/spark it web banner 02.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
                                            
                                         </div>
                                     )}
@@ -137,16 +138,9 @@ export default function HomePage() {
             <section className="py-5 lg:py-10 px-4 lg:px-10">
                 <SectionBorder />
                 <div className="container mx-auto text-center">
-                    <h2 className="text-4xl lg:text-6xl font-black text-white mb-16 font-poppins tracking-tighter uppercase">Our <span className="text-orange-600">Solutions</span></h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-                        {homeData.services?.map((service) => (
-                            <div key={service.id} className="bg-white border border-orange-200 rounded-[2.5rem] p-8 flex flex-col items-center shadow-lg hover:shadow-orange-200/30 hover:-translate-y-2 transition-all duration-300">
-                                <div className="mb-6 p-4 rounded-2xl bg-orange-50 text-orange-600">{getIcon(service.icon)}</div>
-                                <h3 className="text-xl font-bold text-slate-900 mb-4 font-hind">{service.title}</h3>
-                                <p className="text-slate-600 text-sm leading-relaxed flex-grow line-clamp-3 mb-6 font-medium">{service.desc}</p>
-                                <div className="w-12 h-1 bg-orange-100 rounded-full group-hover:w-full group-hover:bg-orange-500 transition-all duration-500"></div>
-                            </div>
-                        ))}
+                  
+                    <div>
+                        <ServicesPage></ServicesPage>
                     </div>
                 </div>
             </section>

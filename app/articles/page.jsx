@@ -12,7 +12,14 @@ const ArticlesPage = () => {
     : articlesData.articles.filter(art => art.category === activeCategory);
 
   return (
-    <div className="min-h-screen font-hind bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b]">
+    <div className="min-h-screen font-hind  
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500">
       
       {/* ১. প্রিমিয়াম হেডার সেকশন */}
       <section className="relative h-[350px] lg:h-[450px] flex items-center overflow-hidden">

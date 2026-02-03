@@ -27,7 +27,14 @@ export default function CoveragePage() {
     })).filter(region => region.areas.length > 0);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] text-gray-900 font-hind pb-24">
+        <div className="min-h-screen 
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500">
             
             {/* হেডার সেকশন */}
             <section className="relative h-[350px] lg:h-[450px] flex items-center justify-center overflow-hidden">
