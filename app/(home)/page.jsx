@@ -105,9 +105,20 @@ selection:bg-orange-500
                                     
                                     {/* টাইপ: প্যাকেজ */}
                                     {slide.type === 'packages' && (
-                                       <div className="w-full text-center text-white px-2">
-                                          
-                                    <   Image src='/banner/spark it web banner 01.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
+                                         <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
+                                            <div className="w-full lg:w-3/5 text-center lg:text-left text-white order-2 lg:order-1">
+                                                <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">{slide.title}</h1>
+                                                <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-orange-50 opacity-90 max-w-xl mx-auto lg:mx-0 font-hind">{slide.subtitle}</p>
+                                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-3">
+                                                    {slide.items?.map((item, i) => (
+                                                        <div key={i} className="bg-white/10 backdrop-blur-md p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 text-center hover:bg-orange-600 transition-all cursor-pointer shadow-lg font-poppins">
+                                                            <div className="text-lg lg:text-xl font-black italic">{item.label}</div>
+                                                            <div className="text-[10px] font-bold opacity-80 mt-0.5 uppercase">{item.price}</div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        
                                         </div>
                                             
                                        

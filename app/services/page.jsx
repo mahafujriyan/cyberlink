@@ -29,7 +29,7 @@ const getIcon = (iconName) => {
 };
 
 export default function ServicesPage() {
-  const services = data.services; // 🔥 ADD THIS LINE
+  const services = data.services; 
 
   return (
     <section className="min-h-screen 
@@ -37,7 +37,7 @@ export default function ServicesPage() {
 bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
 font-hind  
 selection:text-white
-animate-[gradientMove_18s_ease_infinite]
+
 font-hind 
 selection:bg-orange-500">
       <div className="max-w-7xl mx-auto">
