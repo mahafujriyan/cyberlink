@@ -97,7 +97,7 @@ selection:bg-orange-500
                                     ) : (
                                         <div className="w-full h-full bg-cover bg-center scale-110" style={{ backgroundImage: `url(${slide.bgImage})` }} />
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-orange-950/90 via-orange-950/40 to-orange-100/20 lg:from-orange-950/80 lg:to-orange-100/50"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-black-950/40 to-orange-100/30 lg:from-gray-950/80 lg:to-gray-100/50"></div>
                                 </div>
 
                                 {/* কন্টেন্ট এরিয়া */}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import data from "./service.json"; // 🔥 ADD THIS
+import data from "./service.json"; 
 
 import {
   Home,
@@ -33,12 +33,8 @@ export default function ServicesPage() {
 
   return (
     <section className="min-h-screen 
-
-bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
 font-hind  
-selection:text-white
 
-font-hind 
 selection:bg-orange-500">
       <div className="max-w-7xl mx-auto">
 
