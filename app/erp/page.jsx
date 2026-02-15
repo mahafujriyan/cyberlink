@@ -32,6 +32,12 @@ const ErpyPage = () => {
             title: "Network Monitor",
             desc: "সিস্টেমের যেকোনো ত্রুটি বা ডাউন-টাইম মুহূর্তের মধ্যে ডিটেক্ট করার স্মার্ট সলিউশন।",
             icon: <Cpu size={32} />
+        },
+        {
+            id: 5,
+            title: "Master Admin",
+            desc: "একজন সুপার কন্ট্রোলার থেকে ইউজার রোল, অনুমতি এবং সব মডিউলের অ্যাক্সেস কেন্দ্রীয়ভাবে ম্যানেজ করুন।",
+            icon: <Settings size={32} />
         }
     ];
 
@@ -108,7 +114,7 @@ selection:bg-orange-500">
                         <div className="w-24 h-1.5 bg-orange-600 mx-auto rounded-full shadow-[0_0_20px_#ea580c]"></div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
                         {erpModules.map((item) => (
                             <motion.div
                                 key={item.id}
