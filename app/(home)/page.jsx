@@ -19,7 +19,6 @@ import {
     Check, Facebook, Home, Shield, Briefcase, Server,
     UploadCloud, Settings, Database, Globe, MapPin, Search, Map, ChevronDown
 } from 'lucide-react';
-
 import ServicesPage from '../services/page';
 
 
@@ -47,8 +46,15 @@ const getIcon = (iconName) => {
     return icons[iconName] || <Globe size={30} />;
 };
 
+// সেকশন
+const SectionBorder = () => (
+    <div className="w-full flex justify-center py-10">
+        <div className="w-[80%] h-[1px] bg-gradient-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
+    </div>
+);
+
 export default function HomePage() {
- 
+    // ৩ডি 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
     const rotateX = useTransform(y, [-100, 100], [10, -10]);
@@ -61,15 +67,14 @@ export default function HomePage() {
     }
     function handleMouseLeave() { x.set(0); y.set(0); }
 
-    // সেকশন ডিভাইডার বর্ডার
+    // সেকশন
     const SectionBorder = () => (
         <div className="w-full flex justify-center py-10">
-            <div className="w-[80%] h-px bg-linear-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
+            <div className="w-[80%] h-[1px] bg-gradient-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
         </div>
     );
 
     return (
-<<<<<<< HEAD
         <div className="min-h-screen  bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] font-hind selection:bg-orange-500 selection:text-white">
          {/* ১. Hero Section (Fully Responsive Slider) */}
 <section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
@@ -85,7 +90,7 @@ export default function HomePage() {
             <SwiperSlide key={slide.id}>
                 <div className="relative w-full h-full overflow-hidden">
 
-                    {/* ================= Background Media ================= */}
+                    {/* ========== Background Media ========== */}
                     <div className="absolute inset-0">
 
                         {slide.bgImage && (slide.bgImage.endsWith('.mp4') || slide.bgImage.includes('video')) ? (
@@ -124,7 +129,7 @@ export default function HomePage() {
                         />
                     </div>
 
-                    {/* ================= Content Area ================= */}
+                    {/* =========== Content Area ============*/}
                     <div className="relative z-20 container mx-auto px-4 lg:px-10 h-full flex items-center justify-center pt-10 lg:pt-0">
 
                         {/* ========= PACKAGES TYPE ========= */}
@@ -155,78 +160,6 @@ export default function HomePage() {
                                             </div>
                                         ))}
                                     </div>
-=======
-        <div className="min-h-screen 
-
-bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
-font-hind  
-selection:text-white
-animate-[gradientMove_18s_ease_infinite]
-font-hind 
-selection:bg-orange-500 
-">
-           {/* ১. Hero Section (Fully Responsive Slider) */}
-            <section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
-                <Swiper
-                    modules={[Autoplay, EffectFade]}
-                    effect={"fade"}
-                    fadeEffect={{ crossFade: true }}
-                    autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="w-full h-full"
-                >
-                    {homeData.heroSlides.map((slide) => (
-                        <SwiperSlide key={slide.id}>
-                            <div className="relative w-full h-full overflow-hidden">
-                                {/* ব্যাকগ্রাউন্ড মিডিয়া */}
-                                <div className="absolute inset-0">
-                                    {slide.bgImage && (slide.bgImage.endsWith('.mp4') || slide.bgImage.includes('video')) ? (
-                                        <video src={slide.bgImage} autoPlay muted loop playsInline className="w-full h-full object-cover scale-110" />
-                                    ) : (
-                                        <div className="w-full h-full bg-cover bg-center scale-110" style={{ backgroundImage: `url(${slide.bgImage})` }} />
-                                    )}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-black-950/40 to-orange-100/30 lg:from-gray-950/80 lg:to-gray-100/50"></div>
-                                </div>
-
-                                {/* কন্টেন্ট এরিয়া */}
-                                <div className="relative z-20 container mx-auto px-4 lg:px-10 h-full flex items-center justify-center pt-10 lg:pt-0">
-                                    
-                                    {/* টাইপ: প্যাকেজ */}
-                                    {slide.type === 'packages' && (
-                                         <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                            <div className="w-full lg:w-3/5 text-center lg:text-left text-white order-2 lg:order-1">
-                                                <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">{slide.title}</h1>
-                                                <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-orange-50 opacity-90 max-w-xl mx-auto lg:mx-0 font-hind">{slide.subtitle}</p>
-                                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-3">
-                                                    {slide.items?.map((item, i) => (
-                                                        <div key={i} className="bg-white/10 backdrop-blur-md p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 text-center hover:bg-orange-600 transition-all cursor-pointer shadow-lg font-poppins">
-                                                            <div className="text-lg lg:text-xl font-black italic">{item.label}</div>
-                                                            <div className="text-[10px] font-bold opacity-80 mt-0.5 uppercase">{item.price}</div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        
-                                        </div>
-                                            
-                                       
-                                    )}
-
-                                    {/* টাইপ: গেম লোগো */}
-                                    {slide.type === 'games' && (
-                                        <div className="w-full text-center text-white px-2">
-                                          
-                                    <   Image src='/banner/spark it web banner 03.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
-                                        </div>
-                                    )}
-
-                                    {/* টাইপ: IPv6 */}
-                                    {slide.type === 'ipv6' && (
-                                        <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                          <   Image src='/banner/spark it web banner 02.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
-                                           
-                                        </div>
-                                    )}
->>>>>>> 05875c2e24d1aa31336821d158a312892dcc61a3
                                 </div>
 
                             </div>
@@ -268,10 +201,8 @@ selection:bg-orange-500
             <section className="py-5 lg:py-10 px-4 lg:px-10">
                 <SectionBorder />
                 <div className="container mx-auto text-center">
-                  
-                    <div>
-                        <ServicesPage></ServicesPage>
-                    </div>
+            
+                 <ServicesPage></ServicesPage>
                 </div>
             </section>
             {/* ৩. Coverage Section (3D) */}
@@ -316,7 +247,7 @@ selection:bg-orange-500
             </section>
             {/* 5. Pricing Section */}
             <section className="py-5 lg:py-10 px-4 lg:px-10">
-                <SectionBorder />
+               
                 <div className="container mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-4xl lg:text-6xl font-black text-white mb-4 font-poppins tracking-tighter uppercase">Pricing <span className="text-orange-600">Plans</span></h2>

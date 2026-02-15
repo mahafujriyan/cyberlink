@@ -46,7 +46,7 @@ const InteractivePricingCard = ({ plan, index }) => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
             // কার্ড এখন সাদা (White Glassmorphism)
-            className="group relative bg-white/80 backdrop-blur-xl border border-orange-200 rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(124,45,18,0.15)] transition-all duration-300 hover:border-orange-500/50"
+            className=" my-4 group relative bg-white/80 backdrop-blur-xl border border-orange-200 rounded-[2.5rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(124,45,18,0.15)] transition-all duration-300 hover:border-orange-500/50"
         >
             <motion.div
                 className="pointer-events-none absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"

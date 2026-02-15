@@ -25,7 +25,7 @@ const PayServicePage = () => {
     const [selectedService, setSelectedService] = useState("");
 
     return (
-        <div className="min-h-screen 
+        <div className="min-h-screen my-4
 
 bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
 font-hind  
