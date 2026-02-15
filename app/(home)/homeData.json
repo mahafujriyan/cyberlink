@@ -47,6 +47,7 @@
       "features": ["One address at a time with IPv6"]
     }
   ],
+<<<<<<< HEAD
   "services": [
    [
   {
@@ -315,6 +316,9 @@
 ]
 
   ],
+=======
+ 
+>>>>>>> 05875c2e24d1aa31336821d158a312892dcc61a3
 
   "featureCards": [
     {
@@ -400,7 +404,11 @@
   "coverageBanner": {
     "title": "Ready to start?",
     "subTitle": "Locate our coverage area",
+<<<<<<< HEAD
     "description": "Dot Internet is spread almost everywhere in Dhaka city. Check the availability of all coverage areas in Dhaka.",
+=======
+    "description": "CyberLink is spread almost everywhere in Dhaka city. Check the availability of all coverage areas in Dhaka.",
+>>>>>>> 05875c2e24d1aa31336821d158a312892dcc61a3
     "btnText": "Coverage Area",
     "bgImage": "https://github.com/mdabdullahm/video/raw/refs/heads/main/0009.mp4",
     "overlayText": "কভারেজ এরিয়া"
@@ -435,4 +443,8 @@
       "https://i.ibb.co/r7C8L3J/nagad.png",
       "https://i.ibb.co/r7C8L3J/rocket.png"
     ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 05875c2e24d1aa31336821d158a312892dcc61a3

@@ -5,7 +5,14 @@ import offersData from './offersData.json';
 
 export default function OffersPage() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] text-slate-800 font-hind pb-24">
+        <div className="min-h-screen 
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500  pb-24">
 
             {/* ১. প্রিমিয়াম হেডার সেকশন - বড় ডিভাইসে লেখা উপরে তোলার জন্য আপডেট করা হয়েছে */}
             <section className="relative min-h-[450px] lg:min-h-[700px] flex items-center overflow-hidden">

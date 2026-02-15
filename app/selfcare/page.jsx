@@ -9,7 +9,14 @@ export default function SelfcarePage() {
     const [password, setPassword] = useState("");
 
     return (
-        <div className="min-h-screen bg-orange-100 text-slate-800 font-hind pb-24">
+        <div className="min-h-screen 
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500 pb-24">
             
             {/* ১. ডার্ক হেডার সেকশন (সার্কিট ব্যাকগ্রাউন্ড লুক) */}
             <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden bg-[#0a192f]">

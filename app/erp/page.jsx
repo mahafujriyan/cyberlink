@@ -36,7 +36,14 @@ const ErpyPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] text-slate-800 font-hind pb-24">
+        <div className="min-h-screen 
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500">
             
             {/* ১. লাক্সারি হেডার সেকশন */}
             <section className="relative h-[450px] lg:h-[550px] flex items-center overflow-hidden">

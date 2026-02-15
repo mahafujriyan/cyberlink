@@ -10,7 +10,14 @@ export default function PayBillPage() {
     const [customerId, setCustomerId] = useState("");
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] text-slate-800 font-hind pb-24">
+        <div className="min-h-screen 
+
+bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+font-hind  
+selection:text-white
+animate-[gradientMove_18s_ease_infinite]
+font-hind 
+selection:bg-orange-500">
 
             {/* ১. হেডার সেকশন - প্যাডিং কমিয়ে চওড়া করা হয়েছে */}
             <section className="relative h-[250px] lg:h-[350px] flex items-center overflow-hidden bg-orange-200/50">
