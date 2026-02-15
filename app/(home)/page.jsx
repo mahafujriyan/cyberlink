@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Lottie from "lottie-react";
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-
+import homeData from "./homeData.json";
 // Swiper ইমপোর্ট
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
@@ -68,71 +68,127 @@ export default function HomePage() {
 
     return (
         <div className="min-h-screen  bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] font-hind selection:bg-orange-500 selection:text-white">
-           {/* ১. Hero Section (Fully Responsive Slider) */}
-            <section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
-                <Swiper
-                    modules={[Autoplay, EffectFade]}
-                    effect={"fade"}
-                    fadeEffect={{ crossFade: true }}
-                    autoplay={{ delay: 5000, disableOnInteraction: false }}
-                    className="w-full h-full"
-                >
-                    {homeData.heroSlides.map((slide) => (
-                        <SwiperSlide key={slide.id}>
-                            <div className="relative w-full h-full overflow-hidden">
-                                {/* ব্যাকগ্রাউন্ড মিডিয়া */}
-                                <div className="absolute inset-0">
-                                    {slide.bgImage && (slide.bgImage.endsWith('.mp4') || slide.bgImage.includes('video')) ? (
-                                        <video src={slide.bgImage} autoPlay muted loop playsInline className="w-full h-full object-cover scale-110" />
-                                    ) : (
-                                        <div className="w-full h-full bg-cover bg-center scale-110" style={{ backgroundImage: `url(${slide.bgImage})` }} />
-                                    )}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-orange-950/90 via-orange-950/40 to-orange-100/20 lg:from-orange-950/80 lg:to-orange-100/50"></div>
-                                </div>
+         {/* ১. Hero Section (Fully Responsive Slider) */}
+<section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
 
-                                {/* কন্টেন্ট এরিয়া */}
-                                <div className="relative z-20 container mx-auto px-4 lg:px-10 h-full flex items-center justify-center pt-10 lg:pt-0">
-                                    
-                                    {/* টাইপ: প্যাকেজ */}
-                                    {slide.type === 'packages' && (
-                                        <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                            <div className="w-full lg:w-3/5 text-center lg:text-left text-white order-2 lg:order-1">
-                                                <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">{slide.title}</h1>
-                                                <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-orange-50 opacity-90 max-w-xl mx-auto lg:mx-0 font-hind">{slide.subtitle}</p>
-                                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-3">
-                                                    {slide.items?.map((item, i) => (
-                                                        <div key={i} className="bg-white/10 backdrop-blur-md p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 text-center hover:bg-orange-600 transition-all cursor-pointer shadow-lg font-poppins">
-                                                            <div className="text-lg lg:text-xl font-black italic">{item.label}</div>
-                                                            <div className="text-[10px] font-bold opacity-80 mt-0.5 uppercase">{item.price}</div>
-                                                        </div>
-                                                    ))}
+    <Swiper
+        modules={[Autoplay, EffectFade]}
+        effect={"fade"}
+        fadeEffect={{ crossFade: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }}
+        className="w-full h-full"
+    >
+        {homeData.heroSlides.map((slide) => (
+            <SwiperSlide key={slide.id}>
+                <div className="relative w-full h-full overflow-hidden">
+
+                    {/* ================= Background Media ================= */}
+                    <div className="absolute inset-0">
+
+                        {slide.bgImage && (slide.bgImage.endsWith('.mp4') || slide.bgImage.includes('video')) ? (
+                            <video
+                                src={slide.bgImage}
+                                autoPlay
+                                muted
+                                loop
+                                playsInline
+                                className="w-full h-full object-cover scale-110"
+                            />
+                        ) : (
+                            <div
+                                className="w-full h-full bg-cover bg-center scale-110"
+                                style={{ backgroundImage: `url(${slide.bgImage})` }}
+                            />
+                        )}
+
+                        {/* Main Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10"></div>
+
+                        {/* 🔥 Cinematic Left Fade */}
+                        <div
+                            className="absolute left-0 top-0 h-full w-16 sm:w-24 lg:w-48 pointer-events-none"
+                            style={{
+                                background: "linear-gradient(to right, rgba(0,0,0,0.7), transparent)"
+                            }}
+                        />
+
+                        {/* 🔥 Cinematic Right Fade */}
+                        <div
+                            className="absolute right-0 top-0 h-full w-16 sm:w-24 lg:w-48 pointer-events-none"
+                            style={{
+                                background: "linear-gradient(to left, rgba(0,0,0,0.7), transparent)"
+                            }}
+                        />
+                    </div>
+
+                    {/* ================= Content Area ================= */}
+                    <div className="relative z-20 container mx-auto px-4 lg:px-10 h-full flex items-center justify-center pt-10 lg:pt-0">
+
+                        {/* ========= PACKAGES TYPE ========= */}
+                        {slide.type === 'packages' && (
+                            <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
+
+                                <div className="w-full lg:w-3/5 text-center lg:text-left text-white order-2 lg:order-1">
+                                    <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">
+                                        {slide.title}
+                                    </h1>
+
+                                    <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-gray-200 max-w-xl mx-auto lg:mx-0 font-hind">
+                                        {slide.subtitle}
+                                    </p>
+
+                                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-3">
+                                        {slide.items?.map((item, i) => (
+                                            <div
+                                                key={i}
+                                                className="bg-white/10 backdrop-blur-md p-3 lg:p-4 rounded-xl lg:rounded-2xl border border-white/20 text-center hover:bg-orange-600 transition-all cursor-pointer shadow-lg font-poppins"
+                                            >
+                                                <div className="text-lg lg:text-xl font-black italic">
+                                                    {item.label}
+                                                </div>
+                                                <div className="text-[10px] font-bold opacity-80 mt-0.5 uppercase">
+                                                    {item.price}
                                                 </div>
                                             </div>
-                                            
-                                        </div>
-                                    )}
-
-                                    {/* টাইপ: গেম লোগো */}
-                                    {slide.type === 'games' && (
-                                        <div className="w-full text-center text-white px-2">
-                                          
-                                    <   Image src='/banner/cyberlink banner.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
-                                        </div>
-                                    )}
-
-                                    {/* টাইপ: IPv6 */}
-                                    {slide.type === 'ipv6' && (
-                                        <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                          <   Image src='/banner/cyberlink_web_banner_01.png' alt="Game Logo" width={1600} height={1600} className="mx-auto mb-6 object-contain" />
-                                           
-                                        </div>
-                                    )}
+                                        ))}
+                                    </div>
                                 </div>
+
                             </div>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </section>
+                        )}
+
+                        {/* ========= GAMES TYPE ========= */}
+                        {slide.type === 'games' && (
+                            <div className="w-full text-center text-white px-2">
+                                <Image
+                                    src="/banner/cyberlink banner.png"
+                                    alt="Game Logo"
+                                    width={1600}
+                                    height={1600}
+                                    className="mx-auto mb-6 object-contain"
+                                />
+                            </div>
+                        )}
+
+                        {/* ========= IPV6 TYPE ========= */}
+                        {slide.type === 'ipv6' && (
+                            <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
+                                <Image
+                                    src="/banner/cyberlink_web_banner_01.png"
+                                    alt="IPv6 Banner"
+                                    width={1600}
+                                    height={1600}
+                                    className="mx-auto mb-6 object-contain"
+                                />
+                            </div>
+                        )}
+
+                    </div>
+                </div>
+            </SwiperSlide>
+        ))}
+    </Swiper>
+</section>
             {/* 2. Solutions Section */}
             <section className="py-5 lg:py-10 px-4 lg:px-10">
                 <SectionBorder />
