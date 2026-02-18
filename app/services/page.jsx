@@ -32,7 +32,7 @@ export default function ServicesPage() {
   const services = data.services; 
 
   return (
-    <section className="min-h-screen 
+    <section className="min-h-screen my-3
 font-hind  
 
 selection:bg-orange-500">

@@ -5,7 +5,11 @@ import { useRouter } from "next/navigation";
 
 export default function MasterAdminLoginPage() {
   const router = useRouter();
-  const [password, setPassword] = useState("");
+ 
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -20,7 +24,7 @@ export default function MasterAdminLoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify(formData), 
       });
 
       const data = await response.json();
@@ -44,21 +48,36 @@ export default function MasterAdminLoginPage() {
       <div className="w-full max-w-md bg-white rounded-3xl p-8 shadow-2xl border border-slate-200">
         <h1 className="text-2xl font-black text-slate-900 mb-2">Master Admin Login</h1>
         <p className="text-slate-500 mb-6 text-sm">
-          One secure account to control all website sections.
+          Enter your admin credentials to access the panel.
         </p>
 
         <form onSubmit={handleLogin} className="space-y-4">
+          {/* Username Input Field */}
           <div>
-            <label htmlFor="password" className="text-sm font-bold text-slate-700 block mb-2">
-              Master Password
+            <label className="text-sm font-bold text-slate-700 block mb-2">
+              Username
             </label>
             <input
-              id="password"
+              type="text"
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500 text-slate-900"
+              placeholder="Enter your username"
+              required
+            />
+          </div>
+
+          {/* Password Input Field */}
+          <div>
+            <label className="text-sm font-bold text-slate-700 block mb-2">
+              Password
+            </label>
+            <input
               type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
-              placeholder="Enter master admin password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              className="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-orange-500 text-slate-900"
+              placeholder="Enter password"
               required
             />
           </div>

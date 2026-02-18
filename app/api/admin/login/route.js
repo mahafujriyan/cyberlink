@@ -1,30 +1,37 @@
 import { NextResponse } from "next/server";
+import clientPromise from "@/lib/mongodb";
+import bcrypt from "bcryptjs";
 
 export async function POST(request) {
-  const { password } = await request.json();
+  try {
+    const { username, password } = await request.json();
+    const client = await clientPromise;
+    
+    const db = client.db("cluster0"); 
+    const admin = await db.collection("admins").findOne({ username });
 
-  const masterPassword = process.env.MASTER_ADMIN_PASSWORD;
-  const sessionToken = process.env.MASTER_ADMIN_SESSION_TOKEN || "master-admin-active";
+    if (!admin) {
+      return NextResponse.json({ error: "Admin not found!" }, { status: 404 });
+    }
 
-  if (!masterPassword) {
-    return NextResponse.json(
-      { error: "Master admin password is not configured on server." },
-      { status: 500 }
-    );
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch) {
+      return NextResponse.json({ error: "Invalid credentials!" }, { status: 401 });
+    }
+
+    const response = NextResponse.json({ success: true });
+    
+    
+    response.cookies.set("master_admin_session", process.env.SESSION_TOKEN, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 60 * 60 * 24, 
+    });
+
+    return response;
+  } catch (error) {
+    return NextResponse.json({ error: "Login failed." }, { status: 500 });
   }
-
-  if (password !== masterPassword) {
-    return NextResponse.json({ error: "Invalid master admin password." }, { status: 401 });
-  }
-
-  const response = NextResponse.json({ success: true });
-  response.cookies.set("master_admin_session", sessionToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: 60 * 60 * 8,
-  });
-
-  return response;
 }

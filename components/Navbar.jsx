@@ -6,14 +6,30 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ChevronRight, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import QuickPayModal from './QuickPayModal'; 
-import offersData from '@/app/offers/offersData.json'; 
+import { useEffect } from 'react';
 
 const Navbar = () => {
   const [isPayModalOpen, setIsPayModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const offerCount = offersData?.offers?.length || 0;
+  const [offerCount, setOfferCount] = useState(0);
+
+  useEffect(() => {
+    const loadOfferCount = async () => {
+      try {
+        const response = await fetch("/api/offers", { cache: "no-store" });
+        const data = await response.json();
+        if (response.ok && data.success) {
+          setOfferCount(data?.data?.offers?.length || 0);
+        }
+      } catch {
+        setOfferCount(0);
+      }
+    };
+
+    loadOfferCount();
+  }, []);
 
   const navLinks = [
     { name: 'HOME', href: '/' },

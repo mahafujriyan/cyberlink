@@ -148,69 +148,76 @@
       ]
     },
     {
-  "id": 8,
-  "name": "Tongi",
-  "subtitle": "Check the available area for the Tongi Region",
-  "areas": [
-    "Tongi Bazar",
-    "Arichpur",
-    "Barodeora",
-    "Cherag Ali Bazar",
-    "Dattapara",
-    "Bonmala",
-    "Auchpara",
-    "Rasulbag",
-    "Gazipura",
-    "Shataish"
-  ]
-},
-{
-  "id": 9,
-  "name": "Gazipur",
-  "subtitle": "Check the available area for the Gazipur Region",
-  "areas": [
-    "Konabari"
-  ]
-},
-{
-  "id": 10,
-  "name": "Gopalganj",
-  "subtitle": "Check the available area for the Gopalganj Region",
-  "areas": [
-    "Ghonapara",
-    "Gobra Union",
-    "Nilar Math",
-    "Nabinbag",
-    "Bankpara",
-    "Islamabad",
-    "Ghosherchar",
-    "Latifpur Union",
-    "Chapail Road",
-    "Berashi Union",
-    "Bedgram",
-    "Police Line",
-    "Moulovipara",
-    "Kalabagan",
-    "Shobujbag",
-    "Mia Para"
-  ]
-},
-{
-  "id": 11,
-  "name": "Tangail",
-  "subtitle": "Check the available area for the Tangail Region",
-  "areas": [
-    "Palashtali",
-    "Bisik Road",
-    "Baby Stand",
-    "New Bus Stand",
-    "Sabalia",
-    "Adalat Para",
-    "Kodalia",
-    "Amin Bazar",
-    "6 Ani Bazar",
-    "Delduar Road"
-  ]
-}
+      "id": 8,
+      "name": "Tongi",
+      "subtitle": "Check the available area for the Tongi Region",
+      "areas": [
+        "Tongi Bazar",
+        "Arichpur",
+        "Barodeora",
+        "Cherag Ali Bazar",
+        "Dattapara",
+        "Bonmala",
+        "Auchpara",
+        "Rasulbag",
+        "Gazipura",
+        "Shataish"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Gazipur",
+      "subtitle": "Check the available area for the Gazipur Region",
+      "areas": [
+        "Konabari"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Gopalganj",
+      "subtitle": "Check the available area for the Gopalganj Region",
+      "areas": [
+        "Ghonapara",
+        "Gobra Union",
+        "Nilar Math",
+        "Nabinbag",
+        "Bankpara",
+        "Islamabad",
+        "Ghosherchar",
+        "Latifpur Union",
+        "Chapail Road",
+        "Berashi Union",
+        "Bedgram",
+        "Police Line",
+        "Moulovipara",
+        "Kalabagan",
+        "Shobujbag",
+        "Mia Para"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Tangail",
+      "subtitle": "Check the available area for the Tangail Region",
+      "areas": [
+        "Bisik Road",
+        "Baby Stand",
+        "New Bus Stand",
+        "Sabalia",
+        "Adalat Para",
+        "Kodalia",
+        "Amin Bazar",
+        "6 Ani Bazar",
+        "Delduar Road"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "satkhira",
+      "subtitle": "Check the available area for the satkhira Region",
+      "areas": [
+        "kalaroa"
+      ]
+    }
   ]
 }

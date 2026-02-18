@@ -67,13 +67,6 @@ export default function HomePage() {
     }
     function handleMouseLeave() { x.set(0); y.set(0); }
 
-    // সেকশন
-    const SectionBorder = () => (
-        <div className="w-full flex justify-center py-10">
-            <div className="w-[80%] h-[1px] bg-gradient-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
-        </div>
-    );
-
     return (
         <div className="min-h-screen  bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] font-hind selection:bg-orange-500 selection:text-white">
          {/* ১. Hero Section (Fully Responsive Slider) */}
@@ -180,14 +173,40 @@ export default function HomePage() {
 
                         {/* ========= IPV6 TYPE ========= */}
                         {slide.type === 'ipv6' && (
-                            <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
-                                <Image
-                                    src="/banner/cyberlink_web_banner_01.png"
-                                    alt="IPv6 Banner"
-                                    width={1600}
-                                    height={1600}
-                                    className="mx-auto mb-6 object-contain"
-                                />
+                            <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-12">
+                                <div className="w-full lg:w-1/2 order-2 lg:order-1 text-center lg:text-left text-white">
+                                    <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-poppins uppercase mb-4">
+                                        {slide.title}
+                                    </h2>
+                                    <p className="text-sm sm:text-lg text-slate-200 mb-6">
+                                        {slide.subtitle}
+                                    </p>
+                                    <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+                                        {slide.features?.map((feature) => (
+                                            <span
+                                                key={feature}
+                                                className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-xs sm:text-sm font-bold"
+                                            >
+                                                {feature}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <Link
+                                        href="/connection"
+                                        className="inline-block bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-xl font-black text-sm uppercase"
+                                    >
+                                        Get Connection
+                                    </Link>
+                                </div>
+                                <div className="w-full lg:w-1/2 order-1 lg:order-2">
+                                    <Image
+                                        src="/banner/cyberlink_web_banner_01.png"
+                                        alt="IPv6 Banner"
+                                        width={1600}
+                                        height={1600}
+                                        className="mx-auto w-full max-w-xl object-contain"
+                                    />
+                                </div>
                             </div>
                         )}
 
@@ -271,7 +290,9 @@ export default function HomePage() {
                                 </div>
                                 <div className="w-full lg:w-1/4 text-center lg:text-right">
                                     <div className="mb-6"><span className="text-4xl lg:text-5xl font-black text-slate-900">TK {plan.price}</span><span className="text-orange-600 text-xs font-black uppercase ml-1">/Mo</span></div>
+                                   <Link href={`/connection?package=${encodeURIComponent(plan.speed)}`}>
                                     <button className="bg-orange-600 hover:bg-orange-700 text-white font-black px-10 py-3.5 rounded-xl transition-all shadow-lg active:scale-95 whitespace-nowrap font-poppins text-xs">Buy Now</button>
+                                   </Link>
                                 </div>
                             </motion.div>
                         ))}

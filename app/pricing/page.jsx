@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, useMotionTemplate } from 'framer-motion';
 import { Check, LayoutGrid, Briefcase, ChevronRight } from 'lucide-react';
 import homeData from '../(home)/homeData.json'; 
+import Link from 'next/link';
 
 const InteractivePricingCard = ({ plan, index }) => {
     const mouseX = useMotionValue(0);
@@ -90,10 +91,12 @@ const InteractivePricingCard = ({ plan, index }) => {
                             <span className="text-orange-600 text-sm font-black mb-1 font-poppins">/Mo</span>
                         </div>
                     </div>
-                    <button className="w-full lg:w-auto bg-orange-600 hover:bg-orange-700 text-white font-black px-10 py-3.5 rounded-xl transition-all shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 group/btn mx-auto lg:ml-auto active:scale-95 whitespace-nowrap font-poppins uppercase tracking-widest text-sm">
-                        <span>Buy Now</span>
-                        <ChevronRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                    </button>
+                <Link href={`/connection?package=${encodeURIComponent(plan.speed)}`}>
+                        <button className="w-full lg:w-full bg-orange-600 hover:bg-black text-white font-black px-8 py-4 rounded-2xl transition-all shadow-lg shadow-orange-600/30 flex items-center justify-center gap-2 active:scale-95 uppercase tracking-widest text-xs">
+                            <span>Get Started</span>
+                            <ChevronRight size={18} />
+                        </button>
+                    </Link>
                 </div>
             </div>
         </motion.div>
