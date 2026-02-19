@@ -1,6 +1,7 @@
 import { Poppins, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
+import WelcomePopup from "@/components/Welcome";
 
 // ইংরেজির জন্য Poppins
 const poppins = Poppins({
@@ -18,9 +19,10 @@ const hindSiliguri = Hind_Siliguri({
 
 export default function RootLayout({ children }) {
   return (
-    // এখানে variables গুলো html ট্যাগে যোগ করা হয়েছে
+   
     <html lang="en" className={`${poppins.variable} ${hindSiliguri.variable}`}>
       <body className="antialiased font-poppins">
+          <WelcomePopup />
         <AppShell>{children}</AppShell>
       </body>
     </html>

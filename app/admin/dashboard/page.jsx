@@ -30,16 +30,8 @@ const modules = [
 
 export default function DashboardPage() {
   const [counts, setCounts] = useState({ applications: 0, regions: 0, offers: 0 });
-  const [showWelcome, setShowWelcome] = useState(false);
 
   useEffect(() => {
-    let timer;
-    const popupSeen = sessionStorage.getItem("admin_welcome_seen");
-    if (!popupSeen) {
-      sessionStorage.setItem("admin_welcome_seen", "1");
-      timer = setTimeout(() => setShowWelcome(true), 0);
-    }
-
     const load = async () => {
       try {
         const [applicationsRes, coverageRes, offersRes] = await Promise.all([
@@ -65,30 +57,10 @@ export default function DashboardPage() {
     };
 
     load();
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
   }, []);
 
   return (
     <div className="space-y-8">
-      {showWelcome ? (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-orange-500/30 rounded-3xl p-8 max-w-md w-full text-center">
-            <h2 className="text-3xl font-black mb-3 text-orange-400">Welcome</h2>
-            <p className="text-slate-300 mb-6">
-              Welcome to the admin dashboard. You can manage offers, coverage and connection requests here.
-            </p>
-            <button
-              onClick={() => setShowWelcome(false)}
-              className="bg-orange-600 hover:bg-orange-700 text-white font-black px-8 py-3 rounded-xl"
-            >
-              Continue
-            </button>
-          </div>
-        </div>
-      ) : null}
-
       <div>
         <h1 className="text-4xl font-black">Dashboard Overview</h1>
         <p className="text-slate-400">Manage requests, coverage and campaigns from one place.</p>

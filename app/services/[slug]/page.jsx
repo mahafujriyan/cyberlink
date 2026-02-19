@@ -8,7 +8,7 @@ export default async function ServiceDetails({ params }) {
   if (!service) return notFound();
 
   return (
-    <section className="min-h-screen 
+    <section className="min-h-screen py-3
 
 bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
 font-hind  

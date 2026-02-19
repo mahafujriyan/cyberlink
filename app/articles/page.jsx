@@ -12,7 +12,7 @@ const ArticlesPage = () => {
     : articlesData.articles.filter(art => art.category === activeCategory);
 
   return (
-    <div className="min-h-screen font-hind  
+    <div className="min-h-screen font-hind  py-3
 
 bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
 font-hind  

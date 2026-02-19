@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const statusColors = {
@@ -81,7 +82,12 @@ export default function ApplicationsPage() {
             {apps.map((app) => (
               <tr key={app._id} className="hover:bg-white/5 transition-all group">
                 <td className="p-6">
-                  <p className="font-bold text-white">{app.fullName || app.name || "N/A"}</p>
+              <Link
+  href={`/admin/dashboard/applications/${app._id}`}
+  className="font-bold text-white hover:text-orange-400 transition"
+>
+  {app.fullName || app.name || "N/A"}
+</Link>
                   <p className="text-xs text-slate-500">{app.mobile || app.phone || "N/A"}</p>
                 </td>
                 <td className="p-6 font-mono text-orange-400">{app.package || "N/A"}</td>
@@ -107,6 +113,12 @@ export default function ApplicationsPage() {
                     ))}
                   </select>
                 </td>
+                <Link
+  href={`/admin/dashboard/applications/${app._id}`}
+  className="ml-3 text-xs text-orange-400 hover:underline"
+>
+  View
+</Link>
               </tr>
             ))}
             {!loading && apps.length === 0 ? (

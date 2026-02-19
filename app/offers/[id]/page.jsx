@@ -1,61 +1,74 @@
-"use client";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+async function getOffer(id) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/offers`, {
+    cache: "no-store",
+  });
 
-export default function OfferDetailsPage() {
-  const params = useParams();
-  const [offer, setOffer] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const data = await res.json();
 
-  useEffect(() => {
-    const load = async () => {
-      setLoading(true);
-      setError("");
-      try {
-        const response = await fetch(`/api/offers/${params.id}`, { cache: "no-store" });
-        const data = await response.json();
-        if (!response.ok || !data.success) {
-          throw new Error(data.error || "Unable to load offer.");
-        }
-        setOffer(data.data);
-      } catch (loadError) {
-        setError(loadError.message || "Failed to load offer details.");
-      } finally {
-        setLoading(false);
-      }
-    };
+  if (!res.ok || !data.success) return null;
 
-    if (params.id) {
-      load();
-    }
-  }, [params.id]);
+  return data.data.offers.find((offer) => offer.id === Number(id));
+}
+
+export default async function OfferDetails({ params }) {
+  const { id } = await params;
+
+  const offer = await getOffer(id);
+
+  if (!offer) {
+    notFound();
+  }
 
   return (
-    <div className="min-h-screen bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] text-white px-4 py-10 lg:py-16">
-      <div className="max-w-5xl mx-auto">
-        <Link href="/offers" className="inline-flex mb-8 text-orange-300 hover:text-orange-200 font-bold">
-          ← Back to Offers
-        </Link>
+    <div className="min-h-screen bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] text-white pb-24">
 
-        {loading ? <p className="text-slate-200">Loading offer...</p> : null}
-        {error ? <p className="text-red-300">{error}</p> : null}
+      {/* 🔥 HERO SECTION */}
+      <section className="relative h-[500px] flex items-center justify-center overflow-hidden">
+        <Image
+          src={offer.image}
+          alt={offer.title}
+          fill
+          className="object-cover opacity-50"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
 
-        {offer ? (
-          <article className="bg-white/10 border border-white/10 rounded-[2rem] overflow-hidden">
-            <div className="h-64 lg:h-96 overflow-hidden">
-              <img src={offer.image} alt={offer.title} className="w-full h-full object-cover" />
+        <div className="relative z-10 text-center px-6">
+          <h1 className="text-4xl lg:text-7xl font-black uppercase tracking-tight">
+            {offer.title}
+          </h1>
+        </div>
+      </section>
+
+      {/* 🔥 CONTENT SECTION */}
+      <div className="container mx-auto px-6 lg:px-16 mt-16">
+
+        <div className="bg-white text-slate-800 rounded-[2.5rem] p-10 shadow-2xl">
+
+          <h2 className="text-3xl font-black mb-6 uppercase">
+            Campaign Details
+          </h2>
+
+          <p className="text-lg leading-relaxed font-medium whitespace-pre-line">
+            {offer.description}
+          </p>
+
+          {offer.link && offer.link !== "#" && (
+            <div className="mt-10">
+              <a
+                href={offer.link}
+                className="inline-block bg-orange-600 hover:bg-orange-700 text-white font-black px-10 py-4 rounded-2xl transition-all"
+              >
+                Visit Offer
+              </a>
             </div>
-            <div className="p-6 lg:p-10">
-              <h1 className="text-3xl lg:text-5xl font-black mb-6 uppercase">{offer.title}</h1>
-              <p className="text-base lg:text-xl text-slate-100 leading-relaxed whitespace-pre-line">
-                {offer.description}
-              </p>
-            </div>
-          </article>
-        ) : null}
+          )}
+
+        </div>
+
       </div>
     </div>
   );
