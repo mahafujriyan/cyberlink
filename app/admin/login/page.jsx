@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function MasterAdminLoginPage() {
   const router = useRouter();
@@ -93,6 +94,7 @@ export default function MasterAdminLoginPage() {
           >
             {loading ? "Signing in..." : "Login as Master Admin"}
           </button>
+          <p className="text-center text-sm text-slate-500 mt-4">Create master admin account <Link href="/admin/register" className="text-orange-600 hover:underline">here</Link>.</p>
         </form>
       </div>
     </div>
