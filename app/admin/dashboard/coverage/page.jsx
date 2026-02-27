@@ -122,8 +122,8 @@ export default function AdminCoverage() {
       {error ? <p className="text-red-400">{error}</p> : null}
 
       <div className="grid gap-6">
-        {regions.map((region) => (
-          <div key={region.id} className="bg-slate-900 rounded-[2.5rem] border border-white/5 p-8">
+        {regions.map((region, regionIndex) => (
+          <div key={`${region.id}-${region.name}-${regionIndex}`} className="bg-slate-900 rounded-[2.5rem] border border-white/5 p-8">
             <div className="flex items-center justify-between mb-8 gap-4">
               <div className="flex items-center gap-4">
                 <div className="bg-orange-600 p-3 rounded-xl text-white">
@@ -144,8 +144,8 @@ export default function AdminCoverage() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {region.areas.map((area) => (
-                <div key={area} className="bg-slate-800 px-4 py-2 rounded-lg border border-white/5 flex items-center gap-3 group">
+              {region.areas.map((area, areaIndex) => (
+                <div key={`${area}-${areaIndex}`} className="bg-slate-800 px-4 py-2 rounded-lg border border-white/5 flex items-center gap-3 group">
                   <span className="text-sm font-bold">{area}</span>
                   <button
                     onClick={() => updateArea(region.id, area, "remove-area")}
@@ -181,3 +181,4 @@ export default function AdminCoverage() {
     </div>
   );
 }
+

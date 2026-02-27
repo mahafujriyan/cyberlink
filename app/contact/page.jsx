@@ -5,9 +5,18 @@ import {
   Phone, Mail, MapPin, Send, 
   User, MessageSquare, Tag, Globe 
 } from 'lucide-react';
-import contactData from './contactData.json';
+import usePublicContent from '@/lib/usePublicContent';
 
 export default function ContactPage() {
+    const { data: contactData, loading } = usePublicContent("contact", {
+        header: {},
+        info: { phones: [], enquiries: [] },
+    });
+
+    if (loading) {
+        return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+    }
+
     return (
         <div className="min-h-screen my-4
 

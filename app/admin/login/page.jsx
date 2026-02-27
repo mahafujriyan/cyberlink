@@ -36,7 +36,7 @@ export default function MasterAdminLoginPage() {
         return;
       }
 
-      router.push("/admin");
+      router.push(data.role === "manager" ? "/admin/manager-dashboard" : "/admin/dashboard");
       router.refresh();
     } catch {
       setError("Unable to login right now. Please try again.");

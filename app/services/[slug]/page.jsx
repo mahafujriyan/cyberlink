@@ -1,10 +1,12 @@
 import { notFound } from "next/navigation";
-import data from "../service.json";
+import { readContentByKey } from "@/lib/serverContent";
 
 export default async function ServiceDetails({ params }) {
   const { slug } = await params;
+  const serviceData = await readContentByKey("services");
+  const services = serviceData?.content?.services || [];
 
-  const service = data.services.find((s) => s.slug === slug);
+  const service = services.find((s) => s.slug === slug);
   if (!service) return notFound();
 
   return (

@@ -1,27 +1,62 @@
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { getSessionFromRequest } from "@/lib/adminAuth";
 
 const DB_NAME = "cluster0";
 const COLLECTION_NAME = "connection_requests";
+const ADMIN_COLLECTION_NAME = "admins";
+const STATUS_VALUES = new Set(["pending", "reviewed", "approved", "connected", "completed", "rejected"]);
+const ASSIGNMENT_STATUS_VALUES = new Set(["unassigned", "assigned", "in_progress", "completed", "rejected"]);
 
 function serializeRequest(doc) {
   return {
     ...doc,
     _id: doc._id.toString(),
+    assignedManagerId: doc.assignedManagerId ? doc.assignedManagerId.toString() : "",
     requestedAt: doc.requestedAt ? new Date(doc.requestedAt).toISOString() : null,
+    updatedAt: doc.updatedAt ? new Date(doc.updatedAt).toISOString() : null,
   };
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const id = String(searchParams.get("id") || "");
     const client = await clientPromise;
     const db = client.db(DB_NAME);
-    const requests = await db
-      .collection(COLLECTION_NAME)
-      .find({})
-      .sort({ requestedAt: -1, _id: -1 })
-      .toArray();
+
+    const filter = {};
+    if (session.isManager && session.objectUserId) {
+      filter.assignedManagerId = session.objectUserId;
+    }
+
+    if (id) {
+      if (!ObjectId.isValid(id)) {
+        return NextResponse.json({ success: false, error: "Invalid request id." }, { status: 400 });
+      }
+
+      const requestDoc = await db.collection(COLLECTION_NAME).findOne({
+        ...filter,
+        _id: new ObjectId(id),
+      });
+
+      if (!requestDoc) {
+        return NextResponse.json({ success: false, error: "Request not found." }, { status: 404 });
+      }
+
+      return NextResponse.json({
+        success: true,
+        data: serializeRequest(requestDoc),
+      });
+    }
+
+    const requests = await db.collection(COLLECTION_NAME).find(filter).sort({ requestedAt: -1, _id: -1 }).toArray();
 
     return NextResponse.json({
       success: true,
@@ -43,11 +78,27 @@ export async function POST(request) {
 
     const payload = {
       fullName: body.fullName || body.name || "",
+      email: body.email || "",
       mobile: body.mobile || body.phone || "",
+      phone: body.phone || body.mobile || "",
       location: body.location || body.address || "",
+      flatNo: body.flatNo || "",
+      houseNo: body.houseNo || "",
+      roadNo: body.roadNo || "",
+      area: body.area || "",
+      landmark: body.landmark || "",
+      nid: body.nid || "",
       package: body.package || "",
+      latitude: Number.isFinite(Number(body.latitude)) ? Number(body.latitude) : null,
+      longitude: Number.isFinite(Number(body.longitude)) ? Number(body.longitude) : null,
+      mapLink: body.mapLink || "",
+      notes: body.notes || "",
+      assignedManagerId: null,
+      assignedManagerName: "",
+      assignmentStatus: "unassigned",
       status: "pending",
       requestedAt: new Date(),
+      updatedAt: new Date(),
       source: "apply-api",
     };
 
@@ -63,10 +114,18 @@ export async function POST(request) {
 
 export async function PATCH(request) {
   try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
     const body = await request.json();
     const id = String(body.id || "");
-    const status = String(body.status || "").toLowerCase();
-    const allowed = new Set(["pending", "reviewed", "approved", "connected", "rejected"]);
+    const nextStatus = String(body.status || "").toLowerCase();
+    const nextAssignmentStatus = String(body.assignmentStatus || "").toLowerCase();
+    const hasAssignedManagerId = Object.prototype.hasOwnProperty.call(body, "assignedManagerId");
+    const assignedManagerId = String(body.assignedManagerId || "");
+    const notes = typeof body.notes === "string" ? body.notes.trim() : null;
 
     if (!ObjectId.isValid(id)) {
       return NextResponse.json(
@@ -75,22 +134,74 @@ export async function PATCH(request) {
       );
     }
 
-    if (!allowed.has(status)) {
-      return NextResponse.json(
-        { success: false, error: "Invalid status value." },
-        { status: 400 }
-      );
-    }
-
     const client = await clientPromise;
     const db = client.db(DB_NAME);
+    const filter = { _id: new ObjectId(id) };
+
+    if (session.isManager && session.objectUserId) {
+      filter.assignedManagerId = session.objectUserId;
+    }
+
+    const current = await db.collection(COLLECTION_NAME).findOne(filter);
+    if (!current) {
+      return NextResponse.json({ success: false, error: "Request not found." }, { status: 404 });
+    }
+
+    const updates = {
+      updatedAt: new Date(),
+    };
+
+    if (nextStatus) {
+      if (!STATUS_VALUES.has(nextStatus)) {
+        return NextResponse.json({ success: false, error: "Invalid status value." }, { status: 400 });
+      }
+      updates.status = nextStatus;
+    }
+
+    if (nextAssignmentStatus) {
+      if (!ASSIGNMENT_STATUS_VALUES.has(nextAssignmentStatus)) {
+        return NextResponse.json({ success: false, error: "Invalid assignment status value." }, { status: 400 });
+      }
+      updates.assignmentStatus = nextAssignmentStatus;
+    }
+
+    if (notes !== null) {
+      updates.notes = notes;
+    }
+
+    if (session.isAdmin && hasAssignedManagerId) {
+      if (!assignedManagerId) {
+        updates.assignedManagerId = null;
+        updates.assignedManagerName = "";
+        updates.assignmentStatus = "unassigned";
+      } else {
+        if (!ObjectId.isValid(assignedManagerId)) {
+          return NextResponse.json({ success: false, error: "Invalid manager id." }, { status: 400 });
+        }
+        const manager = await db.collection(ADMIN_COLLECTION_NAME).findOne({
+          _id: new ObjectId(assignedManagerId),
+          role: "manager",
+        });
+
+        if (!manager) {
+          return NextResponse.json({ success: false, error: "Manager not found." }, { status: 404 });
+        }
+
+        updates.assignedManagerId = manager._id;
+        updates.assignedManagerName = manager.username;
+        updates.assignmentStatus = updates.assignmentStatus || "assigned";
+      }
+    }
+
+    if (session.isManager) {
+      delete updates.assignedManagerId;
+      delete updates.assignedManagerName;
+    }
+
     const result = await db.collection(COLLECTION_NAME).updateOne(
-      { _id: new ObjectId(id) },
+      filter,
       {
-        $set: {
-          status,
-          updatedAt: new Date(),
-        },
+        $set: updates,
       }
     );
 
@@ -114,5 +225,33 @@ export async function PATCH(request) {
       { success: false, error: error.message },
       { status: 500 }
     );
+  }
+}
+
+export async function DELETE(request) {
+  try {
+    const session = getSessionFromRequest(request);
+    if (!session.isAuthenticated || !session.isAdmin) {
+      return NextResponse.json({ success: false, error: "Unauthorized." }, { status: 401 });
+    }
+
+    const { searchParams } = new URL(request.url);
+    const id = String(searchParams.get("id") || "");
+
+    if (!ObjectId.isValid(id)) {
+      return NextResponse.json({ success: false, error: "Valid request id is required." }, { status: 400 });
+    }
+
+    const client = await clientPromise;
+    const db = client.db(DB_NAME);
+    const result = await db.collection(COLLECTION_NAME).deleteOne({ _id: new ObjectId(id) });
+
+    if (!result.deletedCount) {
+      return NextResponse.json({ success: false, error: "Request not found." }, { status: 404 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }

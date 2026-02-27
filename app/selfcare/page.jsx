@@ -2,11 +2,19 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { User, Lock, ArrowRight, CheckCircle2, ShieldCheck } from 'lucide-react';
-import selfcareData from './selfcareData.json';
+import usePublicContent from '@/lib/usePublicContent';
 
 export default function SelfcarePage() {
+    const { data: selfcareData, loading } = usePublicContent("selfcare", {
+        header: {},
+        loginSection: { benefits: [] },
+    });
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
+
+    if (loading) {
+        return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+    }
 
     return (
         <div className="min-h-screen 

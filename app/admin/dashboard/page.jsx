@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Users, MapPin, Gift } from "lucide-react";
+import { Users, MapPin, Gift, UserCog, FileText, Package } from "lucide-react";
 
 const modules = [
   {
@@ -26,33 +26,71 @@ const modules = [
     key: "offers",
     accent: "text-orange-400",
   },
+  {
+    title: "Managers",
+    href: "/admin/dashboard/managers",
+    icon: UserCog,
+    key: "managers",
+    accent: "text-cyan-400",
+  },
+  {
+    title: "Packages",
+    href: "/admin/dashboard/packages",
+    icon: Package,
+    key: "packages",
+    accent: "text-amber-300",
+  },
+  {
+    title: "Site Content",
+    href: "/admin/dashboard/settings",
+    icon: FileText,
+    key: "contentFiles",
+    accent: "text-fuchsia-400",
+  },
 ];
 
 export default function DashboardPage() {
-  const [counts, setCounts] = useState({ applications: 0, regions: 0, offers: 0 });
+  const [counts, setCounts] = useState({ applications: 0, regions: 0, offers: 0, managers: 0, contentFiles: 0, packages: 0 });
 
   useEffect(() => {
     const load = async () => {
       try {
-        const [applicationsRes, coverageRes, offersRes] = await Promise.all([
+        const [applicationsRes, coverageRes, offersRes, managersRes, contentRes, homeRes, pricingRes] = await Promise.all([
           fetch("/api/apply", { cache: "no-store" }),
           fetch("/api/coverage", { cache: "no-store" }),
           fetch("/api/offers", { cache: "no-store" }),
+          fetch("/api/admin/managers", { cache: "no-store" }),
+          fetch("/api/admin/content", { cache: "no-store" }),
+          fetch("/api/admin/content?key=home", { cache: "no-store" }),
+          fetch("/api/admin/content?key=pricing", { cache: "no-store" }),
         ]);
 
-        const [applications, coverage, offers] = await Promise.all([
+        const [applications, coverage, offers, managers, content, homeData, pricingData] = await Promise.all([
           applicationsRes.json(),
           coverageRes.json(),
           offersRes.json(),
+          managersRes.json(),
+          contentRes.json(),
+          homeRes.json(),
+          pricingRes.json(),
         ]);
+
+        const heroPackagesCount =
+          homeData?.data?.content?.heroSlides?.find((slide) => slide.type === "packages")?.items?.length || 0;
+        const pricingPlansCount =
+          (pricingData?.data?.content?.regularPlans?.length || 0) +
+          (pricingData?.data?.content?.smePlans?.length || 0);
 
         setCounts({
           applications: applications?.data?.length || 0,
           regions: coverage?.data?.regions?.length || 0,
           offers: offers?.data?.offers?.length || 0,
+          managers: managers?.data?.length || 0,
+          contentFiles: content?.data?.length || 0,
+          packages: heroPackagesCount + pricingPlansCount,
         });
       } catch {
-        setCounts({ applications: 0, regions: 0, offers: 0 });
+        setCounts({ applications: 0, regions: 0, offers: 0, managers: 0, contentFiles: 0, packages: 0 });
       }
     };
 

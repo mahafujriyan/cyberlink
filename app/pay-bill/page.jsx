@@ -4,10 +4,18 @@ import { motion } from 'framer-motion';
 import {
     CreditCard, Smartphone, ArrowRight, User, ChevronRight, CheckCircle2
 } from 'lucide-react';
-import payBillData from './payBillData.json';
+import usePublicContent from '@/lib/usePublicContent';
 
 export default function PayBillPage() {
+    const { data: payBillData, loading } = usePublicContent("payBill", {
+        paymentMethods: [],
+        banks: [],
+    });
     const [customerId, setCustomerId] = useState("");
+
+    if (loading) {
+        return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+    }
 
     return (
         <div className="min-h-screen my-4

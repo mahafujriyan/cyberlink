@@ -1,13 +1,15 @@
 import Link from 'next/link';
-import { LayoutDashboard, Users, MapPin, Gift, Globe, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, MapPin, Gift, Globe, UserCog, Package, LogOut } from 'lucide-react';
 
 export default function AdminLayout({ children }) {
   const menuItems = [
     { name: 'Overview', href: '/admin/dashboard', icon: <LayoutDashboard size={20}/> },
     { name: 'Applications', href: '/admin/dashboard/applications', icon: <Users size={20}/> },
+    { name: 'Packages', href: '/admin/dashboard/packages', icon: <Package size={20}/> },
+    { name: 'Managers', href: '/admin/dashboard/managers', icon: <UserCog size={20}/> },
     { name: 'Coverage', href: '/admin/dashboard/coverage', icon: <MapPin size={20}/> },
     { name: 'Offers', href: '/admin/dashboard/offers', icon: <Gift size={20}/> },
-    { name: 'Site Settings', href: '/admin/dashboard/settings', icon: <Globe size={20}/> },
+    { name: 'Site Content', href: '/admin/dashboard/settings', icon: <Globe size={20}/> },
   ];
 
   return (

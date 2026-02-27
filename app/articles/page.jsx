@@ -2,14 +2,23 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Tag, ArrowRight, Search, ChevronRight } from 'lucide-react';
-import articlesData from './articlesData.json';
+import usePublicContent from '@/lib/usePublicContent';
 
 const ArticlesPage = () => {
+  const { data: articlesData, loading } = usePublicContent("articles", {
+    header: {},
+    categories: [],
+    articles: [],
+  });
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredArticles = activeCategory === "All" 
     ? articlesData.articles 
     : articlesData.articles.filter(art => art.category === activeCategory);
+
+  if (loading) {
+    return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <div className="min-h-screen font-hind  py-3

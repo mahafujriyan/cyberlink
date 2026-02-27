@@ -1,9 +1,20 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import aboutData from './aboutData.json';
+import usePublicContent from '@/lib/usePublicContent';
 
 export default function AboutPage() {
+    const { data: aboutData, loading } = usePublicContent("about", {
+        aboutHeader: {},
+        mainDescription: "",
+        missionVision: [],
+        partners: [],
+    });
+
+    if (loading) {
+        return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+    }
+
     return (
         <div className="min-h-screen my-4
 

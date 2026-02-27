@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import data from "./service.json"; 
+import usePublicContent from "@/lib/usePublicContent";
 
 import {
   Home,
@@ -29,7 +29,12 @@ const getIcon = (iconName) => {
 };
 
 export default function ServicesPage() {
-  const services = data.services; 
+  const { data, loading } = usePublicContent("services", { services: [] });
+  const services = data.services;
+
+  if (loading) {
+    return <div className="min-h-[40vh] text-white flex items-center justify-center">Loading...</div>;
+  }
 
   return (
     <section className="min-h-screen my-3

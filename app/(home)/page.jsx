@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Lottie from "lottie-react";
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import homeData from "./homeData.json";
+import usePublicContent from "@/lib/usePublicContent";
 // Swiper ইমপোর্ট
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
@@ -54,6 +54,13 @@ const SectionBorder = () => (
 );
 
 export default function HomePage() {
+    const { data: homeData, loading: homeLoading } = usePublicContent("home", {
+        heroSlides: [],
+        coverageBanner: {},
+        featureCards: [],
+        regularPlans: [],
+        smePlans: [],
+    });
     // ৩ডি 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -66,6 +73,10 @@ export default function HomePage() {
         y.set(event.clientY - (rect.top + rect.height / 2));
     }
     function handleMouseLeave() { x.set(0); y.set(0); }
+
+    if (homeLoading) {
+        return <div className="min-h-screen bg-slate-950 text-white flex items-center justify-center">Loading...</div>;
+    }
 
     return (
         <div className="min-h-screen  bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] font-hind selection:bg-orange-500 selection:text-white">
@@ -234,12 +245,12 @@ export default function HomePage() {
                     >
                         <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#1b5e3a] to-[#0f331f] p-10 lg:p-16 text-white">
                             <h3 className="text-xl font-bold mb-1 text-green-300 uppercase tracking-widest">Network</h3>
-                            <h2 className="text-3xl lg:text-5xl font-black mb-6 tracking-tighter uppercase font-poppins">{homeData.coverageBanner.overlayText}</h2>
-                            <p className="text-gray-100 mb-10 opacity-80 max-w-sm leading-relaxed">{homeData.coverageBanner.description}</p>
+                            <h2 className="text-3xl lg:text-5xl font-black mb-6 tracking-tighter uppercase font-poppins">{homeData?.coverageBanner?.overlayText}</h2>
+                            <p className="text-gray-100 mb-10 opacity-80 max-w-sm leading-relaxed">{homeData?.coverageBanner?.description}</p>
                             <button className="bg-white text-[#1b5e3a] hover:bg-green-50 px-10 py-4 rounded-2xl font-black transition-all shadow-xl active:scale-95">See Map</button>
                         </div>
                         <div className="w-full lg:w-1/2 relative min-h-[300px] overflow-hidden">
-                            <video src={homeData.coverageBanner.bgImage} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" />
+                            <video src={homeData?.coverageBanner?.bgImage} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0f331f] via-transparent to-transparent opacity-60"></div>
                         </div>
                     </motion.div>
