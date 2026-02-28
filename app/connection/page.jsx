@@ -187,6 +187,7 @@ export default function ConnectionForm() {
                   type="button"
                   onClick={captureCurrentLocation}
                   disabled={locating}
+                  required
                   className="bg-cyan-600 hover:bg-cyan-700 disabled:opacity-60 text-white text-xs font-black uppercase px-5 py-3 rounded-xl"
                 >
                   {locating ? "Capturing..." : "Use Current Location"}

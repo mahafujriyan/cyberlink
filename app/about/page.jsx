@@ -27,11 +27,7 @@ selection:bg-orange-500">
 
             {/* ১. গর্জিয়াস হেডার সেকশন - অরেঞ্জ থিমের সাথে মেলানো */}
             <section className="relative h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
-                <video
-                    src={aboutData.aboutHeader.bgVideo}
-                    autoPlay muted loop playsInline
-                    className="absolute inset-0 w-full h-full object-cover opacity-40 brightness-110"
-                />
+             
                 {/* অরেঞ্জ ওভারলে যা ভিডিওর সাথে মিশে যাবে */}
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-900/60 via-transparent to-orange-100"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#4DE353]"></div>
