@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
 import { getSessionFromRequest } from "@/lib/adminAuth";
+import { notifyAdminsManagerCompleted, notifyAdminsNewRequest, notifyManagerAssigned } from "@/lib/notifications";
 
 const DB_NAME = "cluster0";
 const COLLECTION_NAME = "connection_requests";
@@ -103,6 +104,7 @@ export async function POST(request) {
     };
 
     const res = await db.collection(COLLECTION_NAME).insertOne(payload);
+    await notifyAdminsNewRequest(db, { ...payload, _id: res.insertedId });
     return NextResponse.json({ success: true, id: res.insertedId }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
@@ -169,6 +171,7 @@ export async function PATCH(request) {
       updates.notes = notes;
     }
 
+    let assignedManagerDoc = null;
     if (session.isAdmin && hasAssignedManagerId) {
       if (!assignedManagerId) {
         updates.assignedManagerId = null;
@@ -187,6 +190,7 @@ export async function PATCH(request) {
           return NextResponse.json({ success: false, error: "Manager not found." }, { status: 404 });
         }
 
+        assignedManagerDoc = manager;
         updates.assignedManagerId = manager._id;
         updates.assignedManagerName = manager.username;
         updates.assignmentStatus = updates.assignmentStatus || "assigned";
@@ -197,6 +201,17 @@ export async function PATCH(request) {
       delete updates.assignedManagerId;
       delete updates.assignedManagerName;
     }
+
+    const managerAssignedNow =
+      session.isAdmin &&
+      hasAssignedManagerId &&
+      !!assignedManagerId &&
+      (!current.assignedManagerId || current.assignedManagerId.toString() !== assignedManagerId);
+
+    const managerCompletedNow =
+      session.isManager &&
+      ((updates.assignmentStatus === "completed" && current.assignmentStatus !== "completed") ||
+        (updates.status === "completed" && current.status !== "completed"));
 
     const result = await db.collection(COLLECTION_NAME).updateOne(
       filter,
@@ -219,6 +234,19 @@ export async function PATCH(request) {
         { status: 500 }
       );
     }
+
+    if (managerAssignedNow && assignedManagerDoc) {
+      await notifyManagerAssigned({
+        managerEmail: assignedManagerDoc.email || "",
+        managerName: assignedManagerDoc.username || "",
+        requestDoc: updated,
+      });
+    }
+
+    if (managerCompletedNow) {
+      await notifyAdminsManagerCompleted(db, updated, session.username);
+    }
+
     return NextResponse.json({ success: true, data: serializeRequest(updated) });
   } catch (error) {
     return NextResponse.json(

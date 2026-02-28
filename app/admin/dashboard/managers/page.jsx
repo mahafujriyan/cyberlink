@@ -7,7 +7,7 @@ export default function ManagersPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [creating, setCreating] = useState(false);
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [form, setForm] = useState({ username: "", email: "", password: "" });
 
   const loadManagers = async () => {
     setLoading(true);
@@ -40,7 +40,7 @@ export default function ManagersPage() {
       });
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error(data.error || "Could not create manager.");
-      setForm({ username: "", password: "" });
+      setForm({ username: "", email: "", password: "" });
       setManagers((prev) => [data.data, ...prev]);
     } catch (createError) {
       window.alert(createError.message || "Could not create manager.");
@@ -83,12 +83,20 @@ export default function ManagersPage() {
         <p className="text-slate-400">Create managers and control who receives collection requests.</p>
       </div>
 
-      <form onSubmit={createManager} className="bg-slate-900 border border-white/5 rounded-[1.5rem] p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+      <form onSubmit={createManager} className="bg-slate-900 border border-white/5 rounded-[1.5rem] p-6 grid grid-cols-1 md:grid-cols-4 gap-4">
         <input
           type="text"
           value={form.username}
           onChange={(event) => setForm((prev) => ({ ...prev, username: event.target.value }))}
           placeholder="Manager username"
+          className="bg-slate-800 rounded-xl px-4 py-3 border border-white/10 outline-none focus:border-orange-500"
+          required
+        />
+        <input
+          type="email"
+          value={form.email}
+          onChange={(event) => setForm((prev) => ({ ...prev, email: event.target.value }))}
+          placeholder="Manager email"
           className="bg-slate-800 rounded-xl px-4 py-3 border border-white/10 outline-none focus:border-orange-500"
           required
         />
@@ -118,6 +126,7 @@ export default function ManagersPage() {
           <thead className="bg-white/5 text-[10px] uppercase tracking-widest text-orange-500">
             <tr>
               <th className="p-5">Username</th>
+              <th className="p-5">Email</th>
               <th className="p-5">Role</th>
               <th className="p-5">Created</th>
               <th className="p-5">Status</th>
@@ -128,6 +137,7 @@ export default function ManagersPage() {
             {managers.map((manager) => (
               <tr key={manager._id}>
                 <td className="p-5 font-semibold">{manager.username}</td>
+                <td className="p-5 text-slate-400">{manager.email || "N/A"}</td>
                 <td className="p-5 text-slate-400">{manager.role}</td>
                 <td className="p-5 text-slate-400 text-sm">
                   {manager.createdAt ? new Date(manager.createdAt).toLocaleString() : "N/A"}
@@ -161,7 +171,7 @@ export default function ManagersPage() {
             ))}
             {!loading && managers.length === 0 ? (
               <tr>
-                <td colSpan={5} className="p-8 text-center text-slate-500">
+                <td colSpan={6} className="p-8 text-center text-slate-500">
                   No managers found.
                 </td>
               </tr>

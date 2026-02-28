@@ -11,6 +11,7 @@ function serializeManager(doc) {
   return {
     _id: doc._id.toString(),
     username: doc.username,
+    email: doc.email || "",
     role: doc.role,
     active: doc.active !== false,
     createdAt: doc.createdAt ? new Date(doc.createdAt).toISOString() : null,
@@ -47,11 +48,13 @@ export async function POST(request) {
 
     const body = await request.json();
     const username = String(body.username || "").trim().toLowerCase();
+    const email = String(body.email || "").trim().toLowerCase();
     const password = String(body.password || "");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!username || password.length < 6) {
+    if (!username || !emailPattern.test(email) || password.length < 6) {
       return NextResponse.json(
-        { success: false, error: "Username and password (min 6 chars) are required." },
+        { success: false, error: "Valid email, username and password (min 6 chars) are required." },
         { status: 400 }
       );
     }
@@ -64,10 +67,15 @@ export async function POST(request) {
     if (existing) {
       return NextResponse.json({ success: false, error: "Username already exists." }, { status: 400 });
     }
+    const existingEmail = await admins.findOne({ email });
+    if (existingEmail) {
+      return NextResponse.json({ success: false, error: "Email already exists." }, { status: 400 });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const result = await admins.insertOne({
       username,
+      email,
       password: hashedPassword,
       role: "manager",
       active: true,

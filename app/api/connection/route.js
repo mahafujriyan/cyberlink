@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import clientPromise from "@/lib/mongodb";
+import { notifyAdminsNewRequest } from "@/lib/notifications";
 
 export async function POST(request) {
   try {
@@ -7,7 +8,7 @@ export async function POST(request) {
     const client = await clientPromise;
     const db = client.db("cluster0");
 
-    const res = await db.collection("connection_requests").insertOne({
+    const payload = {
       fullName: data.fullName || data.name || "",
       email: data.email || "",
       mobile: data.mobile || data.phone || "",
@@ -31,7 +32,10 @@ export async function POST(request) {
       requestedAt: new Date(),
       updatedAt: new Date(),
       source: "connection-page",
-    });
+    };
+
+    const res = await db.collection("connection_requests").insertOne(payload);
+    await notifyAdminsNewRequest(db, { ...payload, _id: res.insertedId });
 
     return NextResponse.json({ success: true, id: res.insertedId });
   } catch (error) {
