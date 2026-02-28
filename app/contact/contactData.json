@@ -6,14 +6,14 @@
   },
   "info": {
     "title": "Contact Information",
-    "phones": ["+8809639121121", "+8809638121121"],
-    "email": "info@cyberlinkcomuinication.com",
-    "address": "650, Rayer Bazar East, (Jafrabad), Mohammadpur, Dhaka.",
+    "phones": ["+8801834123860", "+8801928866916", "+880 1728-115026"],
+    "email": "info@cyberlinkltd.com",
+    "address": "Board Bazar, National University, Gazipur , Gazipur, Bangladesh, 1704",
     "enquiries": [
-      { "label": "Billing enquiries", "email": "accounts@cyberlinkcomuinication.com" },
-      { "label": "Technical enquiries", "email": "noc@cyberlinkcomuinication.com" },
-      { "label": "New connection enquiries", "email": "sales@cyberlinkcomuinication.com" },
-      { "label": "Management", "email": "admin@cyberlinkcomuinication.com" }
+      { "label": "Billing enquiries", "email": "accounts@cyberlinkltd.com" },
+      { "label": "Technical enquiries", "email": "noc@cyberlinkltd.com" },
+      { "label": "New connection enquiries", "email": "sales@cyberlinkltd.com" },
+      { "label": "Management", "email": "admin@cyberlinkltd.com" }
     ]
   }
 }

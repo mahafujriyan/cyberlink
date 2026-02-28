@@ -174,16 +174,17 @@ selection:bg-blue-600">
                 </motion.div>
 
                 {/* ৩. ম্যাপ সেকশন (নিচে চওড়া ম্যাপের জন্য জায়গা) */}
-                <div className="mt-16 bg-white p-2 rounded-[2.5rem] shadow-xl border border-blue-200 h-[300px] lg:h-[450px] overflow-hidden group">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9023403810237!2d90.36017467605995!3d23.75086088876295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf3670986797%3A0xc32a76f2e82f7c00!2sRayer%20Bazar%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1704400000000!5m2!1sen!2sbd" 
-                        className="w-full h-full rounded-[2rem] grayscale group-hover:grayscale-0 transition-all duration-1000"
-                        style={{ border: 0 }} 
-                        allowFullScreen="" 
-                        loading="lazy" 
-                        referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                </div>
+ <div className="mt-16 bg-white p-2 rounded-[2.5rem] shadow-xl border border-blue-200 h-[300px] lg:h-[450px] overflow-hidden group">
+    <iframe 
+        /* এই লিঙ্কটি আপনার দেওয়া অ্যাড্রেসকে ম্যাপের হেডারে স্পষ্টভাবে দেখাবে */
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.4026350352125!2d90.3899013759325!3d23.94801118120677!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755e1ace7f6929f%3A0x1927b27208e45689!2sNational%20University!5e0!3m2!1sen!2sbd!4v1709123456789!5m2!1sen!2sbd" 
+        className="w-full h-full rounded-[2rem] grayscale group-hover:grayscale-0 transition-all duration-1000"
+        style={{ border: 0 }} 
+        allowFullScreen="" 
+        loading="lazy" 
+        referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+</div>
 
             </div>
         </div>
