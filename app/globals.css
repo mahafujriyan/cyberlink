@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --bg-start: #d8ff30;
-  --bg-mid: #214211;
-  --bg-end: #000f08;
-  --foreground: #ededed;
+  --gp-bg-top: #f3f8ff;
+  --gp-bg-mid: #ffffff;
+  --gp-bg-bottom: #eef5ff;
+  --foreground: #0f172a;
+  --chakra-fonts-heading: Telenor, "Noto Sans Bengali", "Helvetica Neue", Helvetica, Arial, "Noto Sans Bengali", sans-serif;
+  --chakra-fonts-body: Telenor, "Noto Sans Bengali", "Helvetica Neue", Helvetica, Arial, "Noto Sans Bengali", sans-serif;
+  --chakra-fonts-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @theme inline {
@@ -13,22 +16,12 @@
 
 body {
   min-height: 100vh;
-  background: linear-gradient(
-    135deg,
-    var(--bg-start) 0%,
-    var(--bg-mid) 45%,
-    var(--bg-end) 100%
-  );
-  background-size: 200% 200%;
-  animation: slowRotate 18s ease infinite;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(125, 182, 255, 0.05) 0, rgba(125, 182, 255, 0) 32%),
+    radial-gradient(circle at 88% 12%, rgba(90, 156, 255, 0.04) 0, rgba(90, 156, 255, 0) 28%),
+    linear-gradient(180deg, var(--gp-bg-top) 0%, var(--gp-bg-mid) 46%, var(--gp-bg-bottom) 100%);
   color: var(--foreground);
-  font-family: var(--font-hind), var(--font-poppins), sans-serif;
-}
-
-@keyframes slowRotate {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  font-family: var(--chakra-fonts-body);
 }
 
 /* floating animation */
@@ -43,6 +36,14 @@ body {
 
 @layer base {
   html, body {
-    font-family: var(--font-hind), var(--font-poppins), sans-serif;
+    font-family: var(--chakra-fonts-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--chakra-fonts-heading);
+  }
+
+  code, pre, kbd, samp {
+    font-family: var(--chakra-fonts-mono);
   }
 }

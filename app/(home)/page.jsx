@@ -49,7 +49,7 @@ const getIcon = (iconName) => {
 // সেকশন
 const SectionBorder = () => (
     <div className="w-full flex justify-center py-10">
-        <div className="w-[80%] h-[1px] bg-gradient-to-r from-transparent via-orange-300 to-transparent opacity-50"></div>
+        <div className="w-[80%] h-[1px] bg-gradient-to-r from-transparent via-blue-300 to-transparent"></div>
     </div>
 );
 
@@ -79,7 +79,7 @@ export default function HomePage() {
     }
 
     return (
-        <div className="min-h-screen  bg-gradient-to-br from-[#BFFF00] via-[#0e270e] to-[#2bd22b] font-hind selection:bg-orange-500 selection:text-white">
+        <div className="min-h-screen font-hind selection:bg-blue-600 selection:text-white">
          {/* ১. Hero Section (Fully Responsive Slider) */}
 <section className="relative w-full h-[100vh] lg:h-[600px] overflow-hidden">
 
@@ -114,23 +114,8 @@ export default function HomePage() {
                         )}
 
                         {/* Main Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-black/10"></div>
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10"></div>
 
-                        {/* 🔥 Cinematic Left Fade */}
-                        <div
-                            className="absolute left-0 top-0 h-full w-16 sm:w-24 lg:w-48 pointer-events-none"
-                            style={{
-                                background: "linear-gradient(to right, rgba(0,0,0,0.7), transparent)"
-                            }}
-                        />
-
-                        {/* 🔥 Cinematic Right Fade */}
-                        <div
-                            className="absolute right-0 top-0 h-full w-16 sm:w-24 lg:w-48 pointer-events-none"
-                            style={{
-                                background: "linear-gradient(to left, rgba(0,0,0,0.7), transparent)"
-                            }}
-                        />
                     </div>
 
                     {/* =========== Content Area ============*/}
@@ -140,12 +125,12 @@ export default function HomePage() {
                         {slide.type === 'packages' && (
                             <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-10">
 
-                                <div className="w-full lg:w-3/5 text-center lg:text-left text-white order-2 lg:order-1">
+                                <div className="w-full lg:w-3/5 text-center text-white order-2 lg:order-1">
                                     <h1 className="text-3xl sm:text-5xl lg:text-7xl font-black mb-3 italic leading-tight font-poppins drop-shadow-2xl">
                                         {slide.title}
                                     </h1>
 
-                                    <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-gray-200 max-w-xl mx-auto lg:mx-0 font-hind">
+                                    <p className="text-sm sm:text-lg lg:text-xl mb-6 lg:mb-10 text-gray-200 max-w-xl mx-auto font-hind">
                                         {slide.subtitle}
                                     </p>
 
@@ -185,14 +170,14 @@ export default function HomePage() {
                         {/* ========= IPV6 TYPE ========= */}
                         {slide.type === 'ipv6' && (
                             <div className="flex flex-col lg:flex-row items-center w-full gap-8 lg:gap-12">
-                                <div className="w-full lg:w-1/2 order-2 lg:order-1 text-center lg:text-left text-white">
+                                <div className="w-full lg:w-1/2 order-2 lg:order-1 text-center text-white">
                                     <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black font-poppins uppercase mb-4">
                                         {slide.title}
                                     </h2>
                                     <p className="text-sm sm:text-lg text-slate-200 mb-6">
                                         {slide.subtitle}
                                     </p>
-                                    <div className="flex flex-wrap justify-center lg:justify-start gap-3 mb-8">
+                                    <div className="flex flex-wrap justify-center gap-3 mb-8">
                                         {slide.features?.map((feature) => (
                                             <span
                                                 key={feature}
@@ -227,6 +212,7 @@ export default function HomePage() {
         ))}
     </Swiper>
 </section>
+            <div className="bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)]">
             {/* 2. Solutions Section */}
             <section className="py-5 lg:py-10 px-4 lg:px-10">
                 <SectionBorder />
@@ -241,17 +227,17 @@ export default function HomePage() {
                 <div className="container mx-auto">
                     <motion.div
                         style={{ rotateX, rotateY, perspective: 1200 }} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
-                        className="relative flex flex-col lg:flex-row overflow-hidden rounded-[3rem] shadow-2xl border border-orange-200 cursor-pointer group bg-white"
+                        className="relative flex flex-col lg:flex-row overflow-hidden rounded-[3rem] shadow-2xl border border-blue-200 cursor-pointer group bg-white"
                     >
-                        <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#1b5e3a] to-[#0f331f] p-10 lg:p-16 text-white">
-                            <h3 className="text-xl font-bold mb-1 text-green-300 uppercase tracking-widest">Network</h3>
+                        <div className="w-full lg:w-1/2 bg-gradient-to-br from-[#0b3a82] to-[#082453] p-10 lg:p-16 text-white text-center">
+                            <h3 className="text-xl font-bold mb-1 text-blue-200 uppercase tracking-widest">Network</h3>
                             <h2 className="text-3xl lg:text-5xl font-black mb-6 tracking-tighter uppercase font-poppins">{homeData?.coverageBanner?.overlayText}</h2>
-                            <p className="text-gray-100 mb-10 opacity-80 max-w-sm leading-relaxed">{homeData?.coverageBanner?.description}</p>
-                            <button className="bg-white text-[#1b5e3a] hover:bg-green-50 px-10 py-4 rounded-2xl font-black transition-all shadow-xl active:scale-95">See Map</button>
+                            <p className="text-blue-100 mb-10 max-w-sm leading-relaxed mx-auto">{homeData?.coverageBanner?.description}</p>
+                            <button className="bg-white text-[#0b3a82] hover:bg-blue-50 px-10 py-4 rounded-2xl font-black transition-all shadow-xl active:scale-95">See Map</button>
                         </div>
                         <div className="w-full lg:w-1/2 relative min-h-[300px] overflow-hidden">
-                            <video src={homeData?.coverageBanner?.bgImage} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0f331f] via-transparent to-transparent opacity-60"></div>
+                            <video src={homeData?.coverageBanner?.bgImage} autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#081d44]/70 via-transparent to-transparent"></div>
                         </div>
                     </motion.div>
                 </div>
@@ -262,13 +248,13 @@ export default function HomePage() {
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                         {homeData.featureCards?.map((card, index) => (
-                            <motion.div key={card.id} whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 30 }} viewport={{ once: true }} whileHover={{ y: -10 }} className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl flex flex-col group border border-orange-200/50">
+                            <motion.div key={card.id} whileInView={{ opacity: 1, y: 0 }} initial={{ opacity: 0, y: 30 }} viewport={{ once: true }} whileHover={{ y: -10 }} className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl flex flex-col group border border-blue-200 hover:border-blue-400 transition-all duration-300">
                                 <div className={`relative h-52 w-full ${card.bgColor} flex items-center justify-center p-6`}>
                                     {card.videoUrl?.endsWith('.json') ? <LottieComponent url={card.videoUrl} /> : <video src={card.videoUrl} autoPlay muted loop playsInline className="w-full h-full object-contain mix-blend-multiply" />}
                                 </div>
                                 <div className="py-8 px-4 text-center">
-                                    <h3 className="text-xl lg:text-2xl font-black text-slate-800 font-poppins">{card.title}</h3>
-                                    <div className="mt-3 w-10 h-1 bg-orange-500 mx-auto rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                                    <h3 className="text-xl lg:text-2xl font-black text-slate-900 font-poppins">{card.title}</h3>
+                                    <div className="mt-3 w-10 h-1 bg-blue-600 mx-auto rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                                 </div>
                             </motion.div>
                         ))}
@@ -280,29 +266,29 @@ export default function HomePage() {
                
                 <div className="container mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl lg:text-6xl font-black text-white mb-4 font-poppins tracking-tighter uppercase">Pricing <span className="text-orange-600">Plans</span></h2>
-                        <div className="w-20 h-1.5 bg-orange-600 mx-auto rounded-full mb-6 shadow-lg shadow-orange-500/20"></div>
+                        <h2 className="text-4xl lg:text-6xl font-black text-slate-900 mb-4 font-poppins tracking-tighter uppercase">Pricing <span className="text-blue-700">Plans</span></h2>
+                        <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-6 shadow-lg shadow-blue-500/20"></div>
                     </div>
                     <div className="space-y-6 max-w-6xl mx-auto">
                         {homeData.regularPlans?.map((plan) => (
-                            <motion.div key={plan.id} whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} viewport={{ once: true }} className="bg-white border border-orange-200 rounded-[2.5rem] p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between group hover:border-orange-500 transition-all duration-300 shadow-xl">
-                                <div className="w-full lg:w-1/4 text-center lg:text-left flex flex-col items-center lg:items-start">
+                            <motion.div key={plan.id} whileInView={{ opacity: 1, x: 0 }} initial={{ opacity: 0, x: -20 }} viewport={{ once: true }} className="bg-white border border-blue-200 rounded-[2.5rem] p-8 lg:p-10 flex flex-col lg:flex-row items-center justify-between group hover:border-blue-500 transition-all duration-300 shadow-xl">
+                                <div className="w-full lg:w-1/4 text-center flex flex-col items-center">
                                     <h3 className="text-2xl font-black text-slate-900 mb-1 font-poppins uppercase tracking-tighter">{plan.name}</h3>
-                                    <p className="text-orange-800/60 text-[10px] font-black uppercase tracking-widest mb-6">Digital Journey Start</p>
-                                    <div className="bg-orange-600 text-white px-10 py-3 rounded-full text-xl font-black italic shadow-lg shadow-orange-600/30">{plan.speed}</div>
+                                    <p className="text-blue-900/60 text-[10px] font-black uppercase tracking-widest mb-6">Digital Journey Start</p>
+                                    <div className="bg-blue-600 text-white px-10 py-3 rounded-full text-xl font-black italic shadow-lg shadow-blue-600/30">{plan.speed}</div>
                                 </div>
-                                <div className="w-full lg:w-2/4 grid grid-cols-1 md:grid-cols-2 gap-4 py-8 lg:py-0 border-y lg:border-y-0 lg:border-x border-orange-100 lg:px-12">
+                                <div className="w-full lg:w-2/4 grid grid-cols-1 md:grid-cols-2 gap-4 py-8 lg:py-0 border-y lg:border-y-0 lg:border-x border-blue-100 lg:px-12">
                                     {plan.features.map((feature, idx) => (
                                         <div key={idx} className="flex items-center gap-3 text-sm font-bold text-slate-700">
-                                            <div className="bg-orange-100 p-1 rounded-full text-orange-600"><Check size={14} strokeWidth={4} /></div>
+                                            <div className="bg-blue-100 p-1 rounded-full text-blue-600"><Check size={14} strokeWidth={4} /></div>
                                             {feature}
                                         </div>
                                     ))}
                                 </div>
-                                <div className="w-full lg:w-1/4 text-center lg:text-right">
-                                    <div className="mb-6"><span className="text-4xl lg:text-5xl font-black text-slate-900">TK {plan.price}</span><span className="text-orange-600 text-xs font-black uppercase ml-1">/Mo</span></div>
+                                <div className="w-full lg:w-1/4 text-center">
+                                    <div className="mb-6"><span className="text-4xl lg:text-5xl font-black text-slate-900">TK {plan.price}</span><span className="text-blue-700 text-xs font-black uppercase ml-1">/Mo</span></div>
                                    <Link href={`/connection?package=${encodeURIComponent(plan.speed)}`}>
-                                    <button className="bg-orange-600 hover:bg-orange-700 text-white font-black px-10 py-3.5 rounded-xl transition-all shadow-lg active:scale-95 whitespace-nowrap font-poppins text-xs">Buy Now</button>
+                                    <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-10 py-3.5 rounded-xl transition-all shadow-lg active:scale-95 whitespace-nowrap font-poppins text-xs">Buy Now</button>
                                    </Link>
                                 </div>
                             </motion.div>
@@ -310,6 +296,11 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
+            </div>
         </div>
     );
 }
+
+
+
+

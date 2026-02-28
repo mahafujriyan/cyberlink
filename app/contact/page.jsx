@@ -20,20 +20,20 @@ export default function ContactPage() {
     return (
         <div className="min-h-screen my-4
 
-bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] 
 font-hind  
 selection:text-white
-animate-[gradientMove_18s_ease_infinite]
+
 font-hind 
-selection:bg-orange-500">
+selection:bg-blue-600">
             
             {/* ১. হেডার সেকশন - নীল/ডার্ক ওভারলেসহ (ভিডিওর সাথে মিল রেখে) */}
             <section className="relative h-[300px] lg:h-[450px] flex items-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                    <video 
-                        src={contactData.header.bgVideo} 
-                        autoPlay muted loop playsInline 
-                        className="w-full h-full object-cover opacity-40 brightness-110" 
+                    <img
+                        src="/banner/cyberlink_web_banner_01.png"
+                        alt="Contact banner"
+                        className="w-full h-full object-cover opacity-35"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-blue-900/80 to-transparent"></div>
                 </div>
@@ -56,7 +56,7 @@ selection:bg-orange-500">
                 <motion.div 
                     initial={{ opacity: 0, y: 30 }} 
                     animate={{ opacity: 1, y: 0 }} 
-                    className="bg-white rounded-[2.5rem] mt-[-60px] shadow-[0_30px_70px_rgba(124,45,18,0.15)] border border-orange-200 overflow-hidden flex flex-col lg:flex-row"
+                    className="bg-white rounded-[2.5rem] mt-[-60px] shadow-[0_30px_70px_rgba(124,45,18,0.15)] border border-blue-200 overflow-hidden flex flex-col lg:flex-row"
                 >
                     
                     {/* বাম পাশ: কন্টাক্ট ইনফরমেশন (ডার্ক ব্লু থিম) */}
@@ -117,55 +117,55 @@ selection:bg-orange-500">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* First Name */}
                                 <div className="space-y-2">
-                                    <label className="text-xs font-black text-orange-400 uppercase tracking-widest ml-1">First Name</label>
+                                    <label className="text-xs font-black text-blue-400 uppercase tracking-widest ml-1">First Name</label>
                                     <div className="relative">
-                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-300" size={18} />
-                                        <input type="text" placeholder="John" className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-xl py-3.5 pl-11 pr-4 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold" />
+                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-300" size={18} />
+                                        <input type="text" placeholder="John" className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-xl py-3.5 pl-11 pr-4 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" />
                                     </div>
                                 </div>
                                 {/* Last Name */}
                                 <div className="space-y-2">
-                                    <label className="text-xs font-black text-orange-400 uppercase tracking-widest ml-1">Last Name</label>
-                                    <input type="text" placeholder="Doe" className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-xl py-3.5 px-4 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold" />
+                                    <label className="text-xs font-black text-blue-400 uppercase tracking-widest ml-1">Last Name</label>
+                                    <input type="text" placeholder="Doe" className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-xl py-3.5 px-4 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" />
                                 </div>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Email */}
                                 <div className="space-y-2">
-                                    <label className="text-xs font-black text-orange-400 uppercase tracking-widest ml-1">Email Address</label>
-                                    <input type="email" placeholder="example@mail.com" className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-xl py-3.5 px-4 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold" />
+                                    <label className="text-xs font-black text-blue-400 uppercase tracking-widest ml-1">Email Address</label>
+                                    <input type="email" placeholder="example@mail.com" className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-xl py-3.5 px-4 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" />
                                 </div>
                                 {/* Phone */}
                                 <div className="space-y-2">
-                                    <label className="text-xs font-black text-orange-400 uppercase tracking-widest ml-1">Phone Number</label>
-                                    <input type="text" placeholder="01XXX-XXXXXX" className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-xl py-3.5 px-4 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold" />
+                                    <label className="text-xs font-black text-blue-400 uppercase tracking-widest ml-1">Phone Number</label>
+                                    <input type="text" placeholder="01XXX-XXXXXX" className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-xl py-3.5 px-4 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" />
                                 </div>
                             </div>
 
                             {/* Subject */}
                             <div className="space-y-2">
-                                <label className="text-xs font-black text-orange-400 uppercase tracking-widest ml-1">Subject</label>
+                                <label className="text-xs font-black text-blue-400 uppercase tracking-widest ml-1">Subject</label>
                                 <div className="relative">
-                                    <Tag className="absolute left-4 top-1/2 -translate-y-1/2 text-orange-300" size={18} />
-                                    <input type="text" placeholder="How can we help?" className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-xl py-3.5 pl-11 pr-4 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold" />
+                                    <Tag className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-300" size={18} />
+                                    <input type="text" placeholder="How can we help?" className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-xl py-3.5 pl-11 pr-4 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold" />
                                 </div>
                             </div>
 
                             {/* Message */}
                             <div className="space-y-2">
                                 <div className="flex justify-between items-center ml-1">
-                                    <label className="text-xs font-black text-orange-400 uppercase tracking-widest">Message</label>
+                                    <label className="text-xs font-black text-blue-400 uppercase tracking-widest">Message</label>
                                     <span className="text-[10px] text-slate-400 font-bold">Max 500 chars</span>
                                 </div>
                                 <div className="relative">
-                                    <MessageSquare className="absolute left-4 top-4 text-orange-300" size={18} />
-                                    <textarea rows="4" placeholder="আপনার বার্তাটি এখানে লিখুন..." className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-2xl py-4 pl-11 pr-4 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold resize-none"></textarea>
+                                    <MessageSquare className="absolute left-4 top-4 text-blue-300" size={18} />
+                                    <textarea rows="4" placeholder="আপনার বার্তাটি এখানে লিখুন..." className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-2xl py-4 pl-11 pr-4 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold resize-none"></textarea>
                                 </div>
                             </div>
 
                             {/* Submit Button */}
-                            <button className="bg-orange-600 hover:bg-orange-700 text-white font-black px-12 py-4 rounded-xl transition-all shadow-lg shadow-orange-600/30 flex items-center justify-center gap-3 active:scale-95 w-full md:w-auto uppercase tracking-widest text-sm">
+                            <button className="bg-blue-600 hover:bg-blue-700 text-white font-black px-12 py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-3 active:scale-95 w-full md:w-auto uppercase tracking-widest text-sm">
                                 Submit Message <Send size={18} />
                             </button>
                         </form>
@@ -174,7 +174,7 @@ selection:bg-orange-500">
                 </motion.div>
 
                 {/* ৩. ম্যাপ সেকশন (নিচে চওড়া ম্যাপের জন্য জায়গা) */}
-                <div className="mt-16 bg-white p-2 rounded-[2.5rem] shadow-xl border border-orange-200 h-[300px] lg:h-[450px] overflow-hidden group">
+                <div className="mt-16 bg-white p-2 rounded-[2.5rem] shadow-xl border border-blue-200 h-[300px] lg:h-[450px] overflow-hidden group">
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.9023403810237!2d90.36017467605995!3d23.75086088876295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755bf3670986797%3A0xc32a76f2e82f7c00!2sRayer%20Bazar%2C%20Dhaka!5e0!3m2!1sen!2sbd!4v1704400000000!5m2!1sen!2sbd" 
                         className="w-full h-full rounded-[2rem] grayscale group-hover:grayscale-0 transition-all duration-1000"
@@ -189,3 +189,4 @@ selection:bg-orange-500">
         </div>
     );
 }
+

@@ -27,12 +27,12 @@ const PayServicePage = () => {
     return (
         <div className="min-h-screen my-4
 
-bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] 
+bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] 
 font-hind  
 selection:text-white
-animate-[gradientMove_18s_ease_infinite]
+
 font-hind 
-selection:bg-orange-500 pb-24">
+selection:bg-blue-600 pb-24">
             
             {/* ১. প্রিমিয়াম হেডার সেকশন */}
             <section className="relative h-[300px] lg:h-[400px] flex items-center overflow-hidden">
@@ -42,13 +42,13 @@ selection:bg-orange-500 pb-24">
                         className="w-full h-full object-cover opacity-20 brightness-110" 
                         alt="Header BG" 
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-orange-100 via-orange-100/70 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-100 via-blue-100/70 to-transparent"></div>
                 </div>
 
                 <div className="container mx-auto px-6 lg:px-20 relative z-10">
                     <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} className="max-w-2xl">
-                        <h1 className="text-5xl lg:text-8xl font-black mb-4 text-orange-900 font-poppins tracking-tighter uppercase italic">
-                            Pay <span className="text-orange-600">Service</span>
+                        <h1 className="text-5xl lg:text-8xl font-black mb-4 text-blue-900 font-poppins tracking-tighter uppercase italic">
+                            Pay <span className="text-blue-600">Service</span>
                         </h1>
                         <p className="text-slate-600 text-lg lg:text-xl font-bold leading-relaxed opacity-90 font-hind">
                             আপনার প্রয়োজনীয় সার্ভিসটি সিলেক্ট করুন এবং সরাসরি অনলাইনে পেমেন্ট সম্পন্ন করুন।
@@ -68,13 +68,13 @@ selection:bg-orange-500 pb-24">
                             onClick={() => setSelectedService(service.name)}
                             className={`cursor-pointer p-6 lg:p-10 rounded-[2.5rem] border-2 transition-all duration-300 flex flex-col items-center justify-center text-center shadow-xl relative overflow-hidden group
                             ${selectedService === service.name 
-                                ? 'bg-orange-600 border-orange-600 text-white shadow-orange-500/40' 
-                                : 'bg-white border-orange-100 text-slate-700 hover:border-orange-500'}`}
+                                ? 'bg-blue-600 border-blue-600 text-white shadow-blue-500/40' 
+                                : 'bg-white border-blue-100 text-slate-700 hover:border-blue-500'}`}
                         >
                             {/* শাইন ইফেক্ট */}
                             <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:left-[100%] transition-all duration-1000"></div>
 
-                            <div className={`mb-4 p-4 rounded-2xl transition-colors ${selectedService === service.name ? 'bg-white/20' : 'bg-orange-50 text-orange-600'}`}>
+                            <div className={`mb-4 p-4 rounded-2xl transition-colors ${selectedService === service.name ? 'bg-white/20' : 'bg-blue-50 text-blue-600'}`}>
                                 {service.icon}
                             </div>
                             <h3 className="text-xs lg:text-lg font-black uppercase tracking-tight font-poppins leading-tight">
@@ -89,24 +89,24 @@ selection:bg-orange-500 pb-24">
                     initial={{ opacity: 0, y: 30 }} 
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="max-w-4xl mx-auto bg-white rounded-[3rem] p-8 lg:p-16 shadow-[0_30px_70px_rgba(124,45,18,0.12)] border border-orange-200"
+                    className="max-w-4xl mx-auto bg-white rounded-[3rem] p-8 lg:p-16 shadow-[0_30px_70px_rgba(124,45,18,0.12)] border border-blue-200"
                 >
                     <div className="text-center mb-12">
-                        <div className="bg-orange-50 text-orange-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block mb-4 font-poppins">Secured Portal</div>
+                        <div className="bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest inline-block mb-4 font-poppins">Secured Portal</div>
                         <h2 className="text-3xl lg:text-5xl font-black text-slate-900 mb-2 font-poppins uppercase tracking-tighter">Payment Details</h2>
-                        <div className="w-16 h-1 bg-orange-600 mx-auto rounded-full"></div>
+                        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
                     </div>
 
                     <form className="space-y-8">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {/* সার্ভিস সিলেকশন (Read Only) */}
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black text-orange-500 uppercase tracking-widest ml-1 font-poppins">Selected Service</label>
+                                <label className="text-[10px] font-black text-blue-500 uppercase tracking-widest ml-1 font-poppins">Selected Service</label>
                                 <input 
                                     type="text" 
                                     value={selectedService || "Please select a service"} 
                                     readOnly 
-                                    className="w-full bg-orange-50/50 border-2 border-orange-100 rounded-2xl py-4 px-6 outline-none font-black text-orange-900 font-poppins shadow-inner"
+                                    className="w-full bg-blue-50/50 border-2 border-blue-100 rounded-2xl py-4 px-6 outline-none font-black text-blue-900 font-poppins shadow-inner"
                                 />
                             </div>
 
@@ -114,13 +114,13 @@ selection:bg-orange-500 pb-24">
                             <div className="space-y-2">
                                 <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 font-poppins">Customer ID / Phone</label>
                                 <div className="relative group">
-                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-orange-400 group-focus-within:text-orange-600 transition-colors">
+                                    <div className="absolute left-5 top-1/2 -translate-y-1/2 text-blue-400 group-focus-within:text-blue-600 transition-colors">
                                         <User size={20} />
                                     </div>
                                     <input 
                                         type="text" 
                                         placeholder="Ex: 017XXXXXXXX" 
-                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-orange-500 focus:bg-white transition-all font-bold text-slate-800 placeholder:text-slate-300"
+                                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-4 pl-14 pr-6 outline-none focus:border-blue-500 focus:bg-white transition-all font-bold text-slate-800 placeholder:text-slate-300"
                                     />
                                 </div>
                             </div>
@@ -130,17 +130,17 @@ selection:bg-orange-500 pb-24">
                         <div className="space-y-2">
                             <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1 font-poppins">Payment Amount (TK)</label>
                             <div className="relative group">
-                                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-orange-600 text-2xl font-black">৳</div>
+                                <div className="absolute left-6 top-1/2 -translate-y-1/2 text-blue-600 text-2xl font-black">৳</div>
                                 <input 
                                     type="number" 
                                     placeholder="0.00" 
-                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-orange-500 focus:bg-white transition-all text-3xl font-black text-slate-900"
+                                    className="w-full bg-slate-50 border-2 border-slate-100 rounded-2xl py-5 pl-14 pr-6 outline-none focus:border-blue-500 focus:bg-white transition-all text-3xl font-black text-slate-900"
                                 />
                             </div>
                         </div>
 
                         {/* পে বাটন */}
-                        <button className="relative group/btn w-full bg-orange-600 hover:bg-orange-700 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-orange-600/30 transition-all active:scale-95 text-xl font-poppins uppercase tracking-widest overflow-hidden">
+                        <button className="relative group/btn w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-blue-600/30 transition-all active:scale-95 text-xl font-poppins uppercase tracking-widest overflow-hidden">
                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000"></div>
                              <span>Proceed to Pay</span> 
                              <ArrowRight size={24} strokeWidth={3} className="group-hover/btn:translate-x-1 transition-transform" />
@@ -148,7 +148,7 @@ selection:bg-orange-500 pb-24">
                     </form>
 
                     {/* পেমেন্ট পার্টনারস */}
-                    <div className="mt-12 pt-10 border-t border-orange-100 flex flex-col items-center">
+                    <div className="mt-12 pt-10 border-t border-blue-100 flex flex-col items-center">
                         <span className="text-[9px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6 font-poppins">Secured Payment Partners</span>
                         <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-10">
                             {paymentLogos.map((logo, i) => (

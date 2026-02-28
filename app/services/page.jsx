@@ -33,20 +33,23 @@ export default function ServicesPage() {
   const services = data.services;
 
   if (loading) {
-    return <div className="min-h-[40vh] text-white flex items-center justify-center">Loading...</div>;
+    return <div className="min-h-[40vh] text-slate-700 flex items-center justify-center">Loading...</div>;
   }
 
   return (
-    <section className="min-h-screen my-3
-font-hind  
+    <section className="relative my-3 py-6 lg:py-10 font-hind selection:bg-blue-600 selection:text-white overflow-hidden">
+      <div className="pointer-events-none absolute -top-16 -left-16 h-52 w-52 rounded-full bg-blue-200/25 blur-3xl"></div>
+      <div className="pointer-events-none absolute -bottom-20 -right-16 h-56 w-56 rounded-full bg-sky-200/25 blur-3xl"></div>
 
-selection:bg-orange-500">
-      <div className="max-w-7xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
 
         <div className="text-center mb-16">
-          <h1 className="text-4xl lg:text-6xl font-black">
-            Our <span className="text-orange-500">Solutions</span>
+          <h1 className="text-4xl lg:text-6xl font-black text-slate-900">
+            Our <span className="text-blue-700">Solutions</span>
           </h1>
+          <p className="mt-4 text-slate-600 max-w-2xl mx-auto">
+            Smart internet services for home, business, and enterprise connectivity.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -54,10 +57,10 @@ selection:bg-orange-500">
             <Link
               key={service.id}
               href={`/services/${service.slug}`}
-              className="group"
+              className="group block"
             >
-              <div className="h-full bg-white rounded-[2.5rem] p-8 shadow-xl flex flex-col ">
-                <div className="mb-6 p-4 flex items-center rounded-2xl bg-orange-50 text-orange-600 w-fit">
+              <div className="h-full bg-white rounded-[2.5rem] p-8 shadow-lg border border-blue-100 flex flex-col transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-2xl group-hover:border-blue-300">
+                <div className="mb-6 p-4 flex items-center rounded-2xl bg-blue-50 text-blue-700 w-fit">
                   {getIcon(service.icon)}
                 </div>
 
@@ -68,6 +71,10 @@ selection:bg-orange-500">
                 <p className="text-slate-600 text-sm grow">
                   {service.shortDesc}
                 </p>
+
+                <span className="mt-6 inline-flex items-center text-sm font-bold text-blue-700">
+                  Explore Service
+                </span>
               </div>
             </Link>
           ))}

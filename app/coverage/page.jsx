@@ -58,33 +58,28 @@ export default function CoveragePage() {
   );
 
   return (
-    <div className="min-h-screen my-5 bg-[linear-gradient(135deg,#000f08_0%,#214211_30%)] font-hind selection:text-white animate-[gradientMove_18s_ease_infinite] selection:bg-orange-500">
+    <div className="min-h-screen my-5 bg-[radial-gradient(circle_at_12%_14%,rgba(0,177,229,0.12)_0,rgba(0,177,229,0)_30%),radial-gradient(circle_at_88%_10%,rgba(0,120,187,0.1)_0,rgba(0,120,187,0)_26%),linear-gradient(180deg,#f6fbff_0%,#ffffff_52%,#f1f7ff_100%)] font-hind selection:text-white  selection:bg-blue-600">
       <section className="relative h-[350px] lg:h-[450px] flex items-center justify-center overflow-hidden">
-        {coverageData.header.bgVideo ? (
-          <video
-            src={coverageData.header.bgVideo}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-          />
-        ) : null}
-        <div className="absolute inset-0 bg-gradient-to-b from-orange-950/80 via-transparent to-orange-100" />
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-4xl lg:text-7xl font-black italic font-poppins tracking-tighter uppercase text-white drop-shadow-2xl">
-            {coverageData.header.title}
-          </h1>
-          <p className="text-orange-50 mt-4 max-w-xl mx-auto opacity-90 font-hind">
-            {coverageData.header.description}
-          </p>
+        <img
+          src="/header/coverage.png"
+          alt="Coverage banner"
+          className="absolute inset-0 w-full h-full object-cover opacity-100"
+        />
+     
+        <div className="relative z-10 text-center px-6 py-3">
+        <h1 className="text-4xl lg:text-7xl font-black italic font-poppins tracking-tighter uppercase text-blue-700 drop-shadow-sm">
+  {coverageData.header.title}
+</h1>
+<p className="text-gray-50 text-xl mt-4 max-w-xl mx-auto font-medium font-hind">
+  {coverageData.header.description}
+</p>
         </div>
       </section>
 
       <div className="container mx-auto px-4 lg:px-10 relative z-20">
-        <div className="flex justify-center -mt-12 mb-20">
+        <div className="flex justify-center mt-12 mb-20">
           <div className="relative w-full max-w-2xl">
-            <div className="flex items-center bg-white border border-orange-200 rounded-2xl overflow-hidden shadow-[0_15px_40px_-15px_rgba(124,45,18,0.2)] focus-within:ring-4 focus-within:ring-orange-500/10 focus-within:border-orange-500 transition-all">
+            <div className="flex items-center  bg-white border border-blue-200 rounded-2xl overflow-hidden shadow-[0_15px_40px_-15px_rgba(124,45,18,0.2)] focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 transition-all">
               <div className="pl-6 text-gray-400">
                 <Search size={20} />
               </div>
@@ -95,7 +90,7 @@ export default function CoveragePage() {
                 onChange={(event) => setSearchQuery(event.target.value)}
               />
               <div className="pr-6">
-                <MapPin size={24} className="text-orange-600 animate-bounce" />
+                <MapPin size={24} className="text-blue-600 animate-bounce" />
               </div>
             </div>
           </div>
@@ -109,14 +104,14 @@ export default function CoveragePage() {
               <motion.div
                 key={`${region.id}-${region.name}`}
                 initial={false}
-                className="bg-white/70 backdrop-blur-md border border-orange-200 rounded-[2.5rem] overflow-hidden shadow-[0_15px_45px_-10px_rgba(124,45,18,0.12)] hover:shadow-[0_25px_60px_-12px_rgba(124,45,18,0.2)] transition-all duration-500"
+                className="bg-white/70 backdrop-blur-md border border-blue-200 rounded-[2.5rem] overflow-hidden shadow-[0_15px_45px_-10px_rgba(124,45,18,0.12)] hover:shadow-[0_25px_60px_-12px_rgba(124,45,18,0.2)] transition-all duration-500"
               >
                 <div
-                  className="flex items-center justify-between p-6 lg:p-8 cursor-pointer select-none hover:bg-orange-50/50 transition-colors"
+                  className="flex items-center justify-between p-6 lg:p-8 cursor-pointer select-none hover:bg-blue-50/50 transition-colors"
                   onClick={() => toggleRegion(region.id)}
                 >
                   <div className="flex items-center gap-4 lg:gap-6">
-                    <div className="bg-orange-600 p-3 lg:p-4 rounded-2xl text-white shadow-lg shadow-orange-600/30">
+                    <div className="bg-blue-600 p-3 lg:p-4 rounded-2xl text-white shadow-lg shadow-blue-600/30">
                       <Map size={28} />
                     </div>
                     <div>
@@ -131,7 +126,7 @@ export default function CoveragePage() {
 
                   <motion.button
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    className="text-orange-500 bg-orange-100 p-2 lg:p-3 rounded-full border border-orange-200 shadow-sm"
+                    className="text-blue-500 bg-blue-100 p-2 lg:p-3 rounded-full border border-blue-200 shadow-sm"
                   >
                     <ChevronDown size={24} strokeWidth={3} />
                   </motion.button>
@@ -146,13 +141,13 @@ export default function CoveragePage() {
                       transition={{ duration: 0.4, ease: "easeInOut" }}
                     >
                       <div className="px-6 lg:px-8 pb-10">
-                        <div className="pt-2 border-t border-orange-100" />
+                        <div className="pt-2 border-t border-blue-100" />
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
                           {region.areas.map((area) => (
                             <motion.div
                               key={`${region.id}-${area}`}
                               whileHover={{ scale: 1.05, y: -3 }}
-                              className="relative group bg-white border border-orange-100 p-5 rounded-2xl flex items-center gap-4 shadow-sm hover:shadow-xl hover:border-orange-300 transition-all overflow-hidden cursor-pointer"
+                              className="relative group bg-white border border-blue-100 p-5 rounded-2xl flex items-center gap-4 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all overflow-hidden cursor-pointer"
                             >
                               <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.08] transition-opacity pointer-events-none">
                                 <svg className="w-full h-full" viewBox="0 0 100 100" fill="none">
@@ -163,7 +158,7 @@ export default function CoveragePage() {
                                   />
                                 </svg>
                               </div>
-                              <div className="relative z-10 bg-orange-50 p-2 rounded-lg text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                              <div className="relative z-10 bg-blue-50 p-2 rounded-lg text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all">
                                 <MapPin size={16} strokeWidth={3} />
                               </div>
                               <span className="relative z-10 text-gray-700 font-bold group-hover:text-gray-900 transition-colors text-sm font-hind">
@@ -189,3 +184,4 @@ export default function CoveragePage() {
     </div>
   );
 }
+
